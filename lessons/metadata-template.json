@@ -1,0 +1,155 @@
+{
+  "topic": "Konu Başlığı",
+  "targetAudience": "Hedef Kitle (örn: Lise 9. Sınıf)",
+  "subject": "Ders Alanı (örn: Biyoloji, Matematik, Fizik)",
+  "totalPages": 5,
+  "estimatedMinutes": 45,
+  "difficulty": "beginner|intermediate|advanced",
+
+  "pages": [
+    {
+      "order": 1,
+      "slug": "giris",
+      "title": "Konuya Giriş",
+      "type": "text",
+      "estimatedMinutes": 8,
+      "description": "Kısa sayfa açıklaması",
+      "components": ["prose", "image"],
+      "interactionLevel": "passive|interactive|high",
+      "visualRequirement": "low|medium|high"
+    },
+    {
+      "order": 2,
+      "slug": "temel-kavramlar",
+      "title": "Temel Kavramlar",
+      "type": "3d-animation",
+      "estimatedMinutes": 15,
+      "description": "3D model ile görselleştirme",
+      "components": ["3d-model", "controls", "annotations"],
+      "interactionLevel": "interactive",
+      "visualRequirement": "high",
+      "modelRequirements": {
+        "objects": ["Nesne 1", "Nesne 2"],
+        "cameraAngles": ["top", "side", "closeup"],
+        "animations": [
+          {
+            "step": 1,
+            "description": "İlk animasyon",
+            "duration": "2s"
+          }
+        ]
+      }
+    },
+    {
+      "order": 3,
+      "slug": "ileri-konular",
+      "title": "İleri Seviye Konular",
+      "type": "2d-animation",
+      "estimatedMinutes": 12,
+      "description": "Akış ve süreçleri gösterme",
+      "components": ["animation", "timeline", "interactive-diagram"],
+      "interactionLevel": "interactive",
+      "animationFlow": [
+        {
+          "step": 1,
+          "action": "fadeIn",
+          "target": "element1",
+          "trigger": "onView"
+        },
+        {
+          "step": 2,
+          "action": "slideToCenter",
+          "target": "element2",
+          "trigger": "onClick"
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "slug": "uygulamalar",
+      "title": "Pratik Uygulamalar",
+      "type": "interactive",
+      "estimatedMinutes": 10,
+      "description": "Etkileşimli örnekler",
+      "components": ["diagram", "hotspots", "tooltips"],
+      "interactionLevel": "high",
+      "interactiveElements": [
+        {
+          "id": "element1",
+          "type": "hotspot",
+          "action": "tooltip",
+          "content": "Açıklama metni"
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "slug": "test",
+      "title": "Bilgi Testi",
+      "type": "quiz",
+      "estimatedMinutes": 5,
+      "description": "Öğrenme değerlendirmesi",
+      "components": ["quiz"],
+      "interactionLevel": "interactive",
+      "quizConfig": {
+        "questions": 5,
+        "maxAttempts": 3,
+        "passingScore": 60,
+        "showExplanations": true
+      }
+    }
+  ],
+
+  "learningObjectives": [
+    "Öğrenme hedefi 1",
+    "Öğrenme hedefi 2",
+    "Öğrenme hedefi 3",
+    "Öğrenme hedefi 4"
+  ],
+
+  "prerequisites": [
+    "Ön gereksinim 1",
+    "Ön gereksinim 2"
+  ],
+
+  "relatedTopics": [
+    {
+      "title": "İlgili Konu 1",
+      "description": "Kısa açıklama",
+      "difficulty": "beginner"
+    },
+    {
+      "title": "İlgili Konu 2",
+      "description": "Kısa açıklama",
+      "difficulty": "intermediate"
+    }
+  ],
+
+  "resources": [
+    {
+      "type": "video",
+      "title": "Video Kaynağı",
+      "url": "https://example.com",
+      "duration": "10:30"
+    },
+    {
+      "type": "article",
+      "title": "Makale Başlığı",
+      "url": "https://example.com",
+      "author": "Yazar Adı"
+    }
+  ],
+
+  "keywords": [
+    "anahtar kelime 1",
+    "anahtar kelime 2",
+    "anahtar kelime 3"
+  ],
+
+  "assessmentCriteria": {
+    "remembering": 20,
+    "understanding": 30,
+    "applying": 30,
+    "analyzing": 20
+  }
+}
