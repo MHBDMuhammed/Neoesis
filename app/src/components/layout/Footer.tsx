@@ -10,14 +10,14 @@ import { NeoesisLogo } from '@/components/brand/NeoesisLogo';
 // AI:SAFE-EDIT START - Footer links and social
 const footerLinks = {
   product: [
-    { name: 'Home', href: '/' },
-    { name: 'Curriculum', href: '/toc' },
+    { name: 'Ana Sayfa', href: '/' },
+    { name: 'Müfredat', href: '/toc' },
   ],
   resources: [
-    { name: 'Documentation', href: '#' },
-    { name: 'Support', href: '#' },
-    { name: 'Privacy Policy', href: '#' },
-    { name: 'Terms of Service', href: '#' },
+    { name: 'Dokümantasyon', href: '#' },
+    { name: 'Destek', href: '#' },
+    { name: 'Gizlilik Politikası', href: '#' },
+    { name: 'Hizmet Koşulları', href: '#' },
   ],
   social: [
     { name: 'GitHub', href: '#', icon: Github },
@@ -49,7 +49,7 @@ export function Footer() {
               <span className="text-2xl font-bold text-foreground">Neoesis</span>
             </div>
             <p className="mt-4 max-w-md text-sm text-muted-foreground">
-              An intelligent learning platform that adapts to you. Transform knowledge into lasting insight through understanding.
+              Size uyum sağlayan akıllı bir öğrenme platformu. Bilgiyi anlayarak kalıcı içgörüye dönüştürün.
             </p>
             {/* AI:SAFE-EDIT END */}
             {/* Social Links */}
@@ -72,7 +72,7 @@ export function Footer() {
 
           {/* Product Links */}
           <div>
-            <h3 className="text-sm font-semibold text-foreground">Product</h3>
+            <h3 className="text-sm font-semibold text-foreground">Ürün</h3>
             <ul className="mt-4 space-y-3">
               {footerLinks.product.map((item) => (
                 <li key={item.name}>
@@ -90,7 +90,7 @@ export function Footer() {
                   href={`/lesson/${firstLessonSlug}`}
                   className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  Lessons
+                  Dersler
                 </Link>
               </li>
             </ul>
@@ -98,7 +98,7 @@ export function Footer() {
 
           {/* Resources Links */}
           <div>
-            <h3 className="text-sm font-semibold text-foreground">Resources</h3>
+            <h3 className="text-sm font-semibold text-foreground">Kaynaklar</h3>
             <ul className="mt-4 space-y-3">
               {footerLinks.resources.map((item) => (
                 <li key={item.name}>
@@ -119,10 +119,10 @@ export function Footer() {
         <div className="mt-12 border-t pt-8">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <p className="text-sm text-muted-foreground">
-              &copy; {currentYear} Neoesis. All rights reserved.
+              &copy; {currentYear} Neoesis. Tüm hakları saklıdır.
             </p>
             <p className="text-sm text-muted-foreground">
-              Built with Next.js, TypeScript, and Tailwind CSS
+              Next.js, TypeScript ve Tailwind CSS ile geliştirilmiştir
             </p>
           </div>
         </div>

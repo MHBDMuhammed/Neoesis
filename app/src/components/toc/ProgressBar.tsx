@@ -28,9 +28,9 @@ export function ProgressBar() {
   const timeRemaining =
     remainingMinutes > 0
       ? remainingHours > 0
-        ? `${remainingHours}h ${remainingMins}m`
-        : `${remainingMins}m`
-      : 'Complete!';
+        ? `${remainingHours}s ${remainingMins}dk`
+        : `${remainingMins}dk`
+      : 'Tamamlandı!';
 
   return (
     <div
@@ -41,7 +41,7 @@ export function ProgressBar() {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Trophy className="size-5 text-primary" />
-            <h3 className="font-semibold text-foreground">Your Progress</h3>
+            <h3 className="font-semibold text-foreground">İlerlemeniz</h3>
           </div>
           <span className="text-2xl font-bold text-primary">{percentage}%</span>
         </div>
@@ -55,18 +55,18 @@ export function ProgressBar() {
           <div className="flex items-center justify-between text-sm">
             <p className="text-muted-foreground">
               <span className="font-semibold text-foreground">
-                {completedCount}
-              </span>{' '}
-              of{' '}
-              <span className="font-semibold text-foreground">
                 {totalLessons}
               </span>{' '}
-              lessons completed
+              dersten{' '}
+              <span className="font-semibold text-foreground">
+                {completedCount}
+              </span>{' '}
+              tanesi tamamlandı
             </p>
             {remainingMinutes > 0 && (
               <div className="flex items-center gap-1 text-muted-foreground">
                 <Clock className="size-3" />
-                <span>{timeRemaining} remaining</span>
+                <span>{timeRemaining} kaldı</span>
               </div>
             )}
           </div>
@@ -75,7 +75,7 @@ export function ProgressBar() {
         {percentage === 100 && (
           <div className="mt-4 rounded-md bg-primary/10 p-3 text-center">
             <p className="text-sm font-medium text-primary">
-              🎉 Congratulations! You've completed all lessons!
+              🎉 Tebrikler! Tüm dersleri tamamladınız!
             </p>
           </div>
         )}

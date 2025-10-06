@@ -4,9 +4,9 @@ import { ContinueCard } from '@/components/home/ContinueCard';
 import { StatsStrip } from '@/components/home/StatsStrip';
 
 export const metadata: Metadata = {
-  title: 'Home',
+  title: 'Ana Sayfa',
   description:
-    'Master new skills through interactive lessons, quizzes, and hands-on practice. Track your progress and build real expertise.',
+    'İnteraktif dersler, quizler ve uygulamalı pratiklerle yeni beceriler edinin. İlerlemenizi takip edin ve gerçek uzmanlık kazanın.',
 };
 
 export default function HomePage() {

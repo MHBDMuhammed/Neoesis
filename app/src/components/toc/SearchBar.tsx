@@ -32,7 +32,7 @@ export function SearchBar({
         <Search className="pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground transition-colors" />
         <Input
           type="search"
-          placeholder="Search lessons..."
+          placeholder="Ders ara..."
           value={value}
           onChange={(e) => onChange(e.target.value)}
           onFocus={() => setIsFocused(true)}
@@ -40,7 +40,7 @@ export function SearchBar({
           className={`h-12 ps-10 pe-10 transition-all ${
             isFocused ? 'ring-2 ring-ring ring-offset-2' : ''
           }`}
-          aria-label="Search lessons"
+          aria-label="Ders ara"
           aria-describedby={showResultCount ? 'search-results' : undefined}
         />
         {value && (
@@ -49,7 +49,7 @@ export function SearchBar({
             size="sm"
             onClick={handleClear}
             className="absolute end-1 top-1/2 size-8 -translate-y-1/2 p-0 hover:bg-transparent"
-            aria-label="Clear search"
+            aria-label="Aramayı temizle"
           >
             <X className="size-4" />
           </Button>
@@ -65,7 +65,7 @@ export function SearchBar({
           aria-live="polite"
           aria-atomic="true"
         >
-          Found {resultCount} of {totalCount} lessons
+          {totalCount} dersten {resultCount} tanesi bulundu
         </p>
       )}
     </div>

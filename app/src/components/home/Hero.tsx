@@ -61,17 +61,17 @@ export function Hero() {
         className="mb-6 inline-flex items-center gap-2 rounded-full bg-muted px-4 py-2 text-sm font-medium text-muted-foreground"
       >
         <BookOpen className="size-4" />
-        <span>The New Mind of Learning</span>
+        <span>Öğrenmenin Yeni Zihni</span>
       </motion.div>
 
       <motion.h1
         variants={item}
         className="mb-6 bg-gradient-to-br from-foreground to-foreground/70 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl md:text-6xl lg:text-7xl"
       >
-        Learn Through
+        Anlayarak
         <br />
         <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text">
-          Understanding
+          Öğren
         </span>
       </motion.h1>
 
@@ -79,7 +79,7 @@ export function Hero() {
         variants={item}
         className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground sm:text-xl md:text-2xl"
       >
-        Neoesis is an intelligent learning platform that adapts to you. It doesn&apos;t just teach — it understands how you learn, guiding you through interactive lessons that turn knowledge into lasting insight.
+        Neoesis, size uyum sağlayan akıllı bir öğrenme platformudur. Sadece öğretmez — nasıl öğrendiğinizi anlar, bilgiyi kalıcı içgörüye dönüştüren interaktif derslerle sizi yönlendirir.
       </motion.p>
       {/* AI:SAFE-EDIT END */}
 
@@ -93,7 +93,7 @@ export function Hero() {
           className="group relative overflow-hidden px-8 py-6 text-base font-semibold shadow-lg transition-all hover:shadow-xl"
         >
           <span className="relative z-10 flex items-center gap-2">
-            Start Learning
+            Öğrenmeye Başla
             <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
           </span>
           <div className="absolute inset-0 -z-0 bg-gradient-to-r from-primary to-primary/80 opacity-0 transition-opacity group-hover:opacity-100" />
@@ -105,7 +105,7 @@ export function Hero() {
           onClick={handleViewCurriculum}
           className="px-8 py-6 text-base font-semibold shadow-sm transition-all hover:shadow-md"
         >
-          View Curriculum
+          Müfredata Göz At
         </Button>
       </motion.div>
 
@@ -116,10 +116,10 @@ export function Hero() {
         className="mt-16 grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-12"
       >
         {[
-          { label: 'Interactive', value: 'Lessons' },
-          { label: 'Self-Paced', value: 'Learning' },
-          { label: 'Track', value: 'Progress' },
-          { label: 'Instant', value: 'Feedback' },
+          { label: 'İnteraktif', value: 'Dersler' },
+          { label: 'Kendi Hızında', value: 'Öğrenme' },
+          { label: 'İlerleme', value: 'Takibi' },
+          { label: 'Anında', value: 'Geri Bildirim' },
         ].map((feature, index) => (
           <div
             key={index}

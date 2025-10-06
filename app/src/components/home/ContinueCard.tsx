@@ -65,7 +65,7 @@ export function ContinueCard() {
             <div className="flex items-center justify-between">
               <CardTitle className="flex items-center gap-2 text-lg font-semibold">
                 <PlayCircle className="size-5 text-primary" />
-                Continue Where You Left Off
+                Kaldığınız Yerden Devam Edin
               </CardTitle>
               <Badge
                 variant={
@@ -76,12 +76,12 @@ export function ContinueCard() {
                 {lessonData.status === 'completed' ? (
                   <>
                     <CheckCircle2 className="size-3" />
-                    Completed
+                    Tamamlandı
                   </>
                 ) : (
                   <>
                     <Clock className="size-3" />
-                    In Progress
+                    Devam Ediyor
                   </>
                 )}
               </Badge>
@@ -95,12 +95,12 @@ export function ContinueCard() {
                   {lessonData.title}
                 </h3>
                 <span className="text-sm text-muted-foreground">
-                  {lessonData.estimatedMinutes} min
+                  {lessonData.estimatedMinutes} dk
                 </span>
               </div>
               <p className="text-sm capitalize text-muted-foreground">
                 {lessonData.section.replace(/-/g, ' ')} •{' '}
-                {lessonData.scrollProgress}% complete
+                %{lessonData.scrollProgress} tamamlandı
               </p>
             </div>
 
@@ -108,21 +108,21 @@ export function ContinueCard() {
               <Progress
                 value={lessonData.scrollProgress}
                 className="h-2"
-                aria-label={`${lessonData.scrollProgress}% complete`}
+                aria-label={`%${lessonData.scrollProgress} tamamlandı`}
               />
               <div className="flex items-center justify-between gap-4">
                 <p className="text-xs text-muted-foreground">
                   {lessonData.scrollProgress < 100
-                    ? `${100 - lessonData.scrollProgress}% remaining`
-                    : 'Review anytime'}
+                    ? `%${100 - lessonData.scrollProgress} kaldı`
+                    : 'İstediğiniz zaman gözden geçirin'}
                 </p>
                 <Button
                   onClick={handleResume}
                   className="gap-2 shadow-sm"
-                  aria-label={`Resume lesson: ${lessonData.title}`}
+                  aria-label={`Derse devam et: ${lessonData.title}`}
                 >
                   <PlayCircle className="size-4" />
-                  Resume
+                  Devam Et
                 </Button>
               </div>
             </div>

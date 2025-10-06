@@ -64,27 +64,27 @@ export function StatsStrip() {
     return [
       {
         icon: <BookOpen className="size-5" />,
-        label: 'Total Lessons',
+        label: 'Toplam Ders',
         value: totalLessons,
-        description: 'Interactive lessons available',
+        description: 'İnteraktif ders mevcut',
       },
       {
         icon: <Clock className="size-5" />,
-        label: 'Total Time',
-        value: `${Math.ceil(totalMinutes / 60)}h`,
-        description: `${totalMinutes} minutes of content`,
+        label: 'Toplam Süre',
+        value: `${Math.ceil(totalMinutes / 60)}s`,
+        description: `${totalMinutes} dakika içerik`,
       },
       {
         icon: <HelpCircle className="size-5" />,
-        label: 'Quizzes',
+        label: 'Quizler',
         value: quizCount,
-        description: 'Practice assessments',
+        description: 'Pratik değerlendirmeler',
       },
       {
         icon: <Trophy className="size-5" />,
-        label: 'Completed',
-        value: `${completionPercent}%`,
-        description: `${globalProgress.completedCount} of ${totalLessons} lessons`,
+        label: 'Tamamlanan',
+        value: `%${completionPercent}`,
+        description: `${totalLessons} dersten ${globalProgress.completedCount} tanesi`,
       },
     ];
   }, [globalProgress]);

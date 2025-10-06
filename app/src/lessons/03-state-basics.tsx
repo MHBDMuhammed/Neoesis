@@ -3,20 +3,20 @@ import type { LessonMeta } from '@/types/lesson';
 // AI:PROTECTED - Do not modify meta structure
 export const meta: LessonMeta = {
   slug: 'state-basics',
-  title: 'Understanding State',
+  title: 'State\'i Anlamak',
   order: 3,
   section: 'fundamentals',
-  description: 'Learn how to add interactivity to your components using React state.',
+  description: 'React state kullanarak bileşenlerinize interaktivite eklemeyi öğrenin.',
   estimatedMinutes: 12,
   objectives: [
-    'Understand what state is and when to use it',
-    'Use the useState hook to manage component state',
-    'Update state and trigger re-renders',
-    'Handle user interactions with state'
+    'State\'in ne olduğunu ve ne zaman kullanılacağını anlama',
+    'Bileşen state\'ini yönetmek için useState hook\'unu kullanma',
+    'State\'i güncelleme ve yeniden render tetikleme',
+    'State ile kullanıcı etkileşimlerini yönetme'
   ],
   quiz: {
     id: 'quiz-state-basics',
-    prompt: 'What hook do you use to add state to a function component?',
+    prompt: 'Bir fonksiyon bileşenine state eklemek için hangi hook\'u kullanırsınız?',
     type: 'single-choice',
     options: [
       'useEffect()',
@@ -25,7 +25,7 @@ export const meta: LessonMeta = {
       'useReducer()'
     ],
     correctAnswer: 1,
-    explanation: 'The useState hook is the primary way to add state to function components. It returns the current state value and a function to update it.',
+    explanation: 'useState hook\'u, fonksiyon bileşenlerine state eklemenin birincil yoludur. Mevcut state değerini ve onu güncellemek için bir fonksiyonu döndürür.',
     maxAttempts: 3
   }
 };

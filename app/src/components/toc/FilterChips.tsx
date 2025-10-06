@@ -33,11 +33,11 @@ export function FilterChips({
         <div className="flex items-center gap-2">
           <Filter className="size-4 text-muted-foreground" />
           <h3 className="text-sm font-medium text-foreground">
-            Filter by Section
+            Bölüme Göre Filtrele
           </h3>
           {hasActiveFilters && (
             <Badge variant="secondary" className="h-5 px-2 text-xs">
-              {activeCount} selected
+              {activeCount} seçili
             </Badge>
           )}
         </div>
@@ -49,7 +49,7 @@ export function FilterChips({
             className="h-7 gap-1 px-2 text-xs text-muted-foreground hover:text-foreground"
           >
             <X className="size-3" />
-            Clear all
+            Tümünü temizle
           </Button>
         )}
       </div>
@@ -86,7 +86,7 @@ export function FilterChips({
 
       {!hasActiveFilters && (
         <p className="text-xs text-muted-foreground">
-          Select sections to filter lessons
+          Dersleri filtrelemek için bölüm seçin
         </p>
       )}
     </div>

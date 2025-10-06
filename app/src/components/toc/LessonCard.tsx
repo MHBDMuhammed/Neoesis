@@ -13,17 +13,17 @@ interface LessonCardProps {
 
 const statusConfig = {
   not_started: {
-    label: 'Not Started',
+    label: 'Başlanmadı',
     variant: 'outline' as const,
     icon: null,
   },
   in_progress: {
-    label: 'In Progress',
+    label: 'Devam Ediyor',
     variant: 'secondary' as const,
     icon: PlayCircle,
   },
   completed: {
-    label: 'Completed',
+    label: 'Tamamlandı',
     variant: 'default' as const,
     icon: CheckCircle2,
   },

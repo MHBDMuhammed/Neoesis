@@ -15,7 +15,7 @@ export function SectionCard({ section }: SectionCardProps) {
   const hours = Math.floor(section.totalMinutes / 60);
   const minutes = section.totalMinutes % 60;
   const timeDisplay =
-    hours > 0 ? `${hours}h ${minutes}m` : `${minutes} min`;
+    hours > 0 ? `${hours}s ${minutes}dk` : `${minutes} dk`;
 
   return (
     <Card
@@ -41,7 +41,7 @@ export function SectionCard({ section }: SectionCardProps) {
             <div className="flex items-center gap-1">
               <BookOpen className="size-4" />
               <span>
-                {lessonCount} {lessonCount === 1 ? 'lesson' : 'lessons'}
+                {lessonCount} ders
               </span>
             </div>
             <div className="flex items-center gap-1">

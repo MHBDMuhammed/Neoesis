@@ -20,8 +20,8 @@ import { NeoesisLogo } from '@/components/brand/NeoesisLogo';
 
 // AI:SAFE-EDIT START - Navigation items
 const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Curriculum', href: '/toc' },
+  { name: 'Ana Sayfa', href: '/' },
+  { name: 'Müfredat', href: '/toc' },
 ];
 // AI:SAFE-EDIT END
 // End AI:PROTECTED
@@ -73,7 +73,7 @@ export function Header() {
           <Button asChild size="sm" className="gap-2 shadow-sm">
             <Link href={`/lesson/${firstLessonSlug}`}>
               <PlayCircle className="size-4" />
-              <span>Start Learning</span>
+              <span>Öğrenmeye Başla</span>
             </Link>
           </Button>
         </div>
@@ -97,7 +97,7 @@ export function Header() {
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
               <DialogHeader>
-                <DialogTitle>Menu</DialogTitle>
+                <DialogTitle>Menü</DialogTitle>
               </DialogHeader>
               <nav className="flex flex-col gap-4 py-4">
                 {navigation.map((item) => (
@@ -120,7 +120,7 @@ export function Header() {
                 <Button asChild size="default" className="mt-2 gap-2" onClick={() => setMobileMenuOpen(false)}>
                   <Link href={`/lesson/${firstLessonSlug}`}>
                     <PlayCircle className="size-4" />
-                    <span>Start Learning</span>
+                    <span>Öğrenmeye Başla</span>
                   </Link>
                 </Button>
               </nav>

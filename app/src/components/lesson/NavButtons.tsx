@@ -51,7 +51,7 @@ export function NavButtons({ current }: NavButtonsProps) {
               <ChevronLeft className="size-5 shrink-0 transition-transform group-hover:-translate-x-1" />
               <div className="flex-1 space-y-1">
                 <div className="text-xs font-medium text-muted-foreground">
-                  Previous Lesson
+                  Önceki Ders
                 </div>
                 <div className="font-semibold text-foreground group-hover:text-primary">
                   {prev.meta.title}
@@ -80,7 +80,7 @@ export function NavButtons({ current }: NavButtonsProps) {
             >
               <div className="flex-1 space-y-1">
                 <div className="text-xs font-medium text-primary-foreground/80">
-                  Next Lesson
+                  Sonraki Ders
                 </div>
                 <div className="font-semibold text-primary-foreground">
                   {next.meta.title}

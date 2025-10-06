@@ -15,7 +15,7 @@ Herhangi bir konu için pedagojik olarak en uygun, interaktif ve kişiselleştir
 **ZORUNLU:** İlk olarak `.CLAUDE.md` dosyasını oku ve içeriğini tamamıyla anla.
 
 ```
-Dosya: /home/mhbd/pro/Neoesis/.CLAUDE.md
+Dosya: .CLAUDE.md (workspace root)
 ```
 
 Bu dosya şunları içerir:
@@ -46,12 +46,13 @@ bir web uygulaması oluşturacağız.
 
 📚 Süreç:
 1. Konu ve hedef kitle belirleme
-2. Pedagojik plan oluşturma
-3. İçerik araştırma ve yazımı
-4. Kod geliştirme (TSX/React)
-5. Kalite kontrol ve teslimat
+2. Kaynak ve detay tercihleri
+3. Pedagojik plan oluşturma
+4. İçerik araştırma ve yazımı
+5. Kod geliştirme (TSX/React)
+6. Kalite kontrol ve teslimat
 
-⏱️  Tahmini süre: 15-30 dakika (konuya göre)
+⏱️  Tahmini süre: 5-30 dakika (detay seviyesine göre)
 
 Hazır mısınız? Başlayalım! 🚀
 ```
@@ -66,7 +67,7 @@ Hazır mısınız? Başlayalım! 🚀
 
 **Soru 1: Konu**
 ```
-❓ Soru 1/3: Hangi konu üzerine eğitim hazırlamak istersiniz?
+❓ Soru 1/5: Hangi konu üzerine eğitim hazırlamak istersiniz?
 
 Örnekler:
 • "Mitoz Bölünme" (Biyoloji)
@@ -81,7 +82,7 @@ Hazır mısınız? Başlayalım! 🚀
 
 **Soru 2: Hedef Kitle**
 ```
-❓ Soru 2/3: Hedef kitle kimdir?
+❓ Soru 2/5: Hedef kitle kimdir?
 
 Örnekler:
 • "Lise 9. Sınıf Biyoloji"
@@ -97,7 +98,7 @@ Hazır mısınız? Başlayalım! 🚀
 
 **Soru 3: Özel İstekler (Opsiyonel)**
 ```
-❓ Soru 3/3: Özel bir isteğiniz var mı? (İsteğe bağlı)
+❓ Soru 3/5: Özel bir isteğiniz var mı? (İsteğe bağlı)
 
 Örnekler:
 • "Çok görsel olsun, 3D animasyonlar ekleyin"
@@ -111,6 +112,52 @@ Hazır mısınız? Başlayalım! 🚀
 
 **Kullanıcı cevap verdiğinde (veya boş bıraktığında) → Kaydet**
 
+**Soru 4: Kaynak Tercihi**
+```
+❓ Soru 4/5: Hangi kaynaklardan araştırma yapılmasını istersiniz?
+
+Seçenekler:
+1️⃣ Akademik (Akademik makaleler, .edu/.gov siteleri)
+2️⃣ Resmi Eğitim (Ders kitapları, MEB içerikleri)
+3️⃣ Geniş Kapsamlı (Akademik + popüler bilim + örnekler)
+4️⃣ Hızlı (AI'ın mevcut bilgisi, minimal araştırma)
+
+👉 Tercih numarasını yazın (1-4):
+```
+
+**Kullanıcı cevap verdiğinde → Kaydet**
+
+**Soru 5: Detay Seviyesi**
+```
+❓ Soru 5/5: Hangi detay seviyesinde üretim istersiniz?
+
+🚀 Seviye 1 - Hızlı (5-8 dk)
+   • Persona kullanılmaz
+   • Orkestratör direkt kodu oluşturur
+   • Minimum iterasyon
+   • En hızlı sonuç
+
+⚡ Seviye 2 - Orta (10-15 dk)
+   • Orkestratör tüm içerikleri yazar
+   • Baş Mühendis tek seferde tüm sayfaları kodlar
+   • Orta seviye kalite kontrolü
+
+⚙️ Seviye 3 - Dengeli (15-20 dk)
+   • Baş Öğretmen 2 aşamada tüm içerikleri oluşturur
+   • Baş Mühendis 2 oturumda koda çevirir
+   • İyi seviye kalite kontrolü
+
+🎯 Seviye 4 - Detaylı (20-30 dk) [ÖNERİLEN]
+   • Her sayfa teker teker üretilir
+   • Her adımda kalite kontrolü
+   • Maksimum dikkat ve özen
+   • En yüksek kalite
+
+👉 Seviye numarasını yazın (1-4):
+```
+
+**Kullanıcı cevap verdiğinde → Kaydet**
+
 #### 3.2 Bilgileri Özetle ve Onayla
 
 ```
@@ -120,6 +167,8 @@ Hazır mısınız? Başlayalım! 🚀
    • Konu: [KONU]
    • Hedef Kitle: [HEDEF_KITLE]
    • Özel İstek: [ISTEK veya "Yok"]
+   • Kaynak: [KAYNAK_TİPİ]
+   • Detay: Seviye [SEVİYE] - [SEVİYE_ADI]
 
 ❓ Bu bilgilerle devam edelim mi?
    [Evet] → Pedagojik planlama aşamasına geç
@@ -139,6 +188,8 @@ Hazır mısınız? Başlayalım! 🚀
   "topic": "[KONU]",
   "targetAudience": "[HEDEF_KITLE]",
   "specialRequests": ["[ISTEK]"],
+  "sourcePreference": "[KAYNAK]",
+  "detailLevel": [SEVİYE],
   "pedagogicalPlan": null,
   "completedPages": [],
   "currentPage": 0,
@@ -152,18 +203,211 @@ Hazır mısınız? Başlayalım! 🚀
 
 ### Adım 4: AŞAMA 2 - Pedagojik Planlama
 
-#### 4.1 Baş Öğretmen'e Görev Delege Et
+#### DETAY SEVİYESİNE GÖRE AKIŞ DALI
+
+**Detay Seviyesini Kontrol Et:**
+
+---
+
+## 🚀 SEVİYE 1 - HIZLI MOD
+
+### Planlama Aşaması (Seviye 1)
 
 **Kullanıcıya bildir:**
 ```
-⏳ Baş Öğretmen ile birlikte en etkili öğretim planını tasarlıyoruz...
+⚡ Hızlı mod aktif - Direkt üretim başlıyor...
+
+📚 Yapılanlar:
+   ✓ Hızlı konu analizi
+   ✓ Minimal plan oluşturma
+   ✓ Direkt kod üretimi
+
+Bu işlem 5-8 dakika sürebilir...
+```
+
+**Orkestratör kendi başına:**
+
+1. **Hızlı Plan Oluştur:**
+   - 3-5 sayfa belirle
+   - Basit bileşenler seç (text, quiz)
+   - metadata.json oluştur
+
+2. **Direkt TSX Dosyaları Yaz:**
+   - Her sayfa için direkt TSX oluştur
+   - Minimal içerik (1-2 paragraf)
+   - Basit quiz'ler (3 soru)
+
+3. **Hızlı Test:**
+   - TypeScript check
+   - ESLint check
+   - Build test
+
+4. **Teslim Et**
+
+**→ Aşama 5: Teslimat'a geç**
+
+---
+
+## ⚡ SEVİYE 2 - ORTA MOD
+
+### Planlama Aşaması (Seviye 2)
+
+**Kullanıcıya bildir:**
+```
+⚡ Orta mod aktif - Toplu üretim...
+
+📚 Yapılanlar:
+   ✓ Plan oluşturma
+   ✓ Tüm içerikleri tek seferde yazma
+   ✓ Tüm sayfaları tek seferde kodlama
+
+Bu işlem 10-15 dakika sürebilir...
+```
+
+**Orkestratör yapar:**
+
+1. **Plan Oluştur:**
+   - 4-6 sayfa belirle
+   - Orta seviye bileşenler
+   - metadata.json oluştur
+
+2. **Tüm İçerikleri Yaz:**
+   - Tüm sayfalar için markdown oluştur (tek seferde)
+   - Orta seviye detay (2-3 paragraf/sayfa)
+
+3. **Baş Mühendis'e Toplu Görev Ver:**
+   ```
+   @BaşMühendis
+
+   Tüm markdown dosyalarını TSX'e çevir:
+   - [konu-slug]/01-*.md → 01-*.tsx
+   - [konu-slug]/02-*.md → 02-*.tsx
+   - ...
+
+   Tek seferde tüm sayfaları oluştur.
+   ```
+
+4. **Toplu Test:**
+   - TypeScript check
+   - ESLint check
+   - Build test
+
+5. **Teslim Et**
+
+**→ Aşama 5: Teslimat'a geç**
+
+---
+
+## ⚙️ SEVİYE 3 - DENGELİ MOD
+
+### Planlama Aşaması (Seviye 3)
+
+**Kullanıcıya bildir:**
+```
+⚙️ Dengeli mod aktif - İki aşamalı üretim...
+
+📚 Yapılanlar:
+   ✓ Detaylı plan oluşturma
+   ✓ 2 oturumda içerik üretimi
+   ✓ 2 oturumda kod üretimi
+
+Bu işlem 15-20 dakika sürebilir...
+```
+
+**Baş Öğretmen'e görev ver:**
+
+```markdown
+@BaşÖğretmen
+
+## Görev: Pedagojik Plan Oluştur
+
+**Konu:** [KONU]
+**Hedef Kitle:** [HEDEF_KITLE]
+**Kaynak Tercihi:** [KAYNAK]
+
+**Talimatlar:**
+1. Konu analizi yap
+2. 5-7 sayfalık plan oluştur
+3. metadata.json dosyası oluştur
+
+**Çıktı:** metadata.json dosyası
+```
+
+**İki Aşamalı İçerik Üretimi:**
+
+**Oturum 1:**
+```
+Baş Öğretmen'e görev:
+- İlk yarı sayfaları yaz (1-3 veya 1-4)
+- Detaylı içerik (3-4 paragraf/sayfa)
+```
+
+**Test Oturum 1:**
+```
+- İçerik kontrolü
+- Yapı kontrolü
+```
+
+**Oturum 2:**
+```
+Baş Öğretmen'e görev:
+- İkinci yarı sayfaları yaz (4-7 veya 5-7)
+- Aynı detay seviyesi
+```
+
+**Test Oturum 2:**
+```
+- İçerik kontrolü
+- Yapı kontrolü
+```
+
+**İki Aşamalı Kod Üretimi:**
+
+**Oturum 1:**
+```
+Baş Mühendis'e görev:
+- İlk yarı TSX dosyalarını oluştur
+```
+
+**Test Oturum 1:**
+```
+- TypeScript check
+- ESLint check
+```
+
+**Oturum 2:**
+```
+Baş Mühendis'e görev:
+- İkinci yarı TSX dosyalarını oluştur
+```
+
+**Test Oturum 2:**
+```
+- TypeScript check
+- ESLint check
+- Build test
+```
+
+**Teslim Et**
+
+**→ Aşama 5: Teslimat'a geç**
+
+---
+
+## 🎯 SEVİYE 4 - DETAYLI MOD (Mevcut Sistem)
+
+### Planlama Aşaması (Seviye 4)
+
+**Kullanıcıya bildir:**
+```
+🎯 Detaylı mod aktif - En yüksek kalite...
 
 📚 Yapılanlar:
    ✓ Konu analizi başladı
    ✓ Hedef kitleye uygun yaklaşım belirleniyor
    ✓ Sayfa akışı ve bileşenler planlanıyor
 
-Bu işlem 1-2 dakika sürebilir...
+Bu işlem 20-30 dakika sürebilir...
 ```
 
 **Baş Öğretmen personasına geç ve şu görevi ver:**
@@ -175,6 +419,7 @@ Bu işlem 1-2 dakika sürebilir...
 
 **Konu:** [KONU]
 **Hedef Kitle:** [HEDEF_KITLE]
+**Kaynak Tercihi:** [KAYNAK]
 **Özel İstekler:** [ISTEK veya "Yok"]
 
 **Talimatlar:**
@@ -184,10 +429,28 @@ Bu işlem 1-2 dakika sürebilir...
    - Hangi öğretim metodu en etkili? (Görsel, işitsel, kinestetik)
    - Ön bilgi gereksinimleri neler?
 
-2. **Güvenilir Kaynaklardan Araştır:**
-   - Akademik siteler (.edu, .gov)
-   - Resmi ders kitapları
-   - Bilimsel kaynaklar
+2. **Kaynak Tercihine Göre Araştır:**
+
+   [Eğer sourcePreference === "Akademik":]
+   - Öncelikle .edu, .gov uzantılı siteler
+   - Akademik makaleler ve araştırmalar
+   - Peer-reviewed kaynaklar
+
+   [Eğer sourcePreference === "Resmi Eğitim":]
+   - Ders kitapları
+   - MEB içerikleri
+   - Müfredat dokümanları
+
+   [Eğer sourcePreference === "Geniş Kapsamlı":]
+   - Akademik kaynaklar
+   - Popüler bilim kaynakları
+   - Pratik örnekler
+   - Video içerikler
+
+   [Eğer sourcePreference === "Hızlı":]
+   - AI'ın mevcut bilgisi
+   - Minimal web araştırması
+   - Temel kaynaklar
 
 3. **Ders Planı Oluştur:**
    - Toplam kaç sayfa olmalı? (min: 3, max: 8)
@@ -196,8 +459,8 @@ Bu işlem 1-2 dakika sürebilir...
    - Öğrenme hedefleri neler?
 
 4. **metadata.json Dosyası Oluştur:**
-   - Konum: /home/mhbd/pro/Neoesis/lessons/[konu-slug]/metadata.json
-   - Şablon: /home/mhbd/pro/Neoesis/lessons/metadata-template.json
+   - Konum: lessons/[konu-slug]/metadata.json
+   - Şablon: lessons/metadata-template.json
    - Tüm alanları doldur
 
 5. **Kısa Özet Hazırla:**
@@ -209,18 +472,10 @@ Bu işlem 1-2 dakika sürebilir...
 - metadata.json dosyası oluşturulmuş olmalı
 - 3-5 cümlelik plan özeti
 
-**Kılavuz:** /home/mhbd/pro/Neoesis/lessons/README.md
+**Kılavuz:** lessons/README.md
 ```
 
-#### 4.2 Baş Öğretmen'den Plan Al
-
-Baş Öğretmen'in oluşturduğu **metadata.json** dosyasını oku:
-
-```bash
-Dosya: /home/mhbd/pro/Neoesis/lessons/[konu-slug]/metadata.json
-```
-
-#### 4.3 Planı Kullanıcıya Sun
+**Planı Kullanıcıya Sun:**
 
 ```
 ✅ Harika! Baş Öğretmen ders planını hazırladı.
@@ -242,386 +497,52 @@ Dosya: /home/mhbd/pro/Neoesis/lessons/[konu-slug]/metadata.json
 
 [Evet] → İçerik ve kod üretimi başlar
 [Değiştir] → Hangi kısmı değiştirmek istersiniz?
-[Detay Göster] → metadata.json içeriğini tam göster
 ```
 
-**Kullanıcı "Evet" derse → Aşama 3'e geç**
-**Kullanıcı "Değiştir" derse → Neyi değiştirmek istediğini sor ve Baş Öğretmen'e revize görevi ver**
+**Her Sayfa İçin Döngü:**
 
-#### 4.4 State Güncelle
-
-```json
-{
-  "currentPhase": 2,
-  "pedagogicalPlan": { /* metadata.json içeriği */ },
-  "totalPages": [N],
-  "approvalStatus": "approved",
-  "status": "building"
-}
+**A. İçerik Üretimi (Baş Öğretmen):**
 ```
-
----
-
-### Adım 5: AŞAMA 3 - Genel Tasarım (Opsiyonel)
-
-#### 5.1 Marka Kişiselleştirme Sor
-
-```
-🎨 Marka Kişiselleştirme (İsteğe bağlı)
-
-Varsayılan olarak "Neoesis" teması kullanılacak:
-   • Renk: Neoesis Indigo (profesyonel mavi-mor)
-   • Logo: Neoesis neural network logosu
-   • Tema: Light/Dark mode destekli
-
-❓ Özel bir marka rengi veya isim isterseniz belirtebilirsiniz:
-
-[Varsayılan] → Neoesis teması ile devam et
-[Özelleştir] → Marka adı, renk, slogan gir
-```
-
-**Kullanıcı "Varsayılan" seçerse:**
-```
-✅ Neoesis varsayılan teması kullanılacak.
-⏳ İçerik üretimi başlıyor...
-```
-
-**Kullanıcı "Özelleştir" seçerse:**
-Ek sorular sor ve Baş Mühendis'e `pnpm customize:brand` görevi ver.
-
-#### 5.2 State Güncelle
-
-```json
-{
-  "currentPhase": 3,
-  "brandingCustomization": "default" veya { /* özel ayarlar */ },
-  "status": "building"
-}
-```
-
----
-
-### Adım 6: AŞAMA 4 - Aşamalı Sayfa Üretimi (DÖNGÜ)
-
-**Her sayfa için aşağıdaki adımları tekrarla:**
-
-#### 6.1 Döngü Başlatma
-
-```
-🚀 Sayfa Üretimi Başlıyor!
-
-📊 İlerleme: 0/[N] sayfa
-```
-
-#### 6.2 Her Sayfa İçin Loop
-
-**Sayfa bilgilerini metadata.json'dan al:**
-
-```javascript
-const currentPageMeta = metadata.pages[currentPageIndex]
-// {
-//   order: 1,
-//   slug: "giris",
-//   title: "Konuya Giriş",
-//   type: "text",
-//   estimatedMinutes: 8,
-//   ...
-// }
-```
-
-##### A. İçerik Üretimi (Baş Öğretmen)
-
-**Kullanıcıya bildir:**
-```
-⏳ Sayfa [N]/[TOTAL]: "[BAŞLIK]" hazırlanıyor...
-   📝 Baş Öğretmen içerik yazıyor...
-```
-
-**Baş Öğretmen personasına geç:**
-
-```markdown
 @BaşÖğretmen
 
-## Görev: Sayfa İçeriği Yaz
+Sayfa [N]/[TOTAL] - "[BAŞLIK]"
 
-**Sayfa:** [N]/[TOTAL] - "[BAŞLIK]"
+Markdown dosyası oluştur:
+- Kaynak tercihine göre araştır
+- Detaylı içerik yaz (4-6 paragraf)
+- Örnekler ekle
+- Quiz soruları yaz
 
-**Metadata:**
-- Slug: [slug]
-- Type: [type]
-- Estimated Minutes: [estimatedMinutes]
-- Components: [components]
-- Interaction Level: [interactionLevel]
-
-**Context (Tüm Plan):**
-[metadata.json içeriğinin tamamını ver]
-
-**Talimatlar:**
-
-1. **Markdown Dosyası Oluştur:**
-   Konum: /home/mhbd/pro/Neoesis/lessons/[konu-slug]/[order]-[slug].md
-   Şablon: /home/mhbd/pro/Neoesis/lessons/LESSON-TEMPLATE.md
-
-2. **İçerik Yazım Kuralları:**
-   - Hedef kitleye uygun dil kullan ([TARGET_AUDIENCE])
-   - LESSON-TEMPLATE.md yapısını takip et
-   - Frontmatter metadata ekle (---slug: ..---)
-   - Öğrenme hedeflerini yaz (🎯)
-   - Ana içeriği yaz (semantic HTML)
-   - Anahtar kavramları listele (🔑)
-   - Sayfa özetini yaz (📌)
-
-3. **Bileşen Türüne Göre Ek Gereksinimler:**
-
-   [Eğer type === "3d-animation":]
-   - 3D model gereksinimlerini detaylı belirt
-   - Hangi objeler, kamera açıları, animasyon adımları
-
-   [Eğer type === "2d-animation":]
-   - Animasyon akışını belirt
-   - Framer Motion için adımları tanımla
-
-   [Eğer type === "quiz":]
-   - Quiz sorularını yaz (min 3, max 10)
-   - Her soru için şıklar, doğru cevap, açıklama
-
-4. **Kalite Kontrol:**
-   - Cümleler max 20 kelime
-   - Paragraflar max 5 cümle
-   - Günlük örnekler var mı?
-   - Görselleme önerileri belirtilmiş mi?
-
-**Çıktı:** [order]-[slug].md dosyası oluşturulmuş olmalı
-
-**Kılavuz:** /home/mhbd/pro/Neoesis/lessons/README.md
+Çıktı: lessons/[konu-slug]/[order]-[slug].md
 ```
 
-**İçerik tamamlandığını doğrula:**
-```bash
-Dosya var mı: /home/mhbd/pro/Neoesis/lessons/[konu-slug]/[order]-[slug].md
+**B. Kod Üretimi (Baş Mühendis):**
 ```
-
-##### B. Kod Üretimi (Baş Mühendis)
-
-**Kullanıcıya bildir:**
-```
-   ✅ İçerik hazır!
-   ⏳ Baş Mühendis kod yazıyor...
-```
-
-**Baş Mühendis personasına geç:**
-
-```markdown
 @BaşMühendis
 
-## Görev: TSX Sayfası Oluştur
+TSX sayfası oluştur:
+- Markdown'ı JSX'e çevir
+- Bileşenleri implement et
+- Quiz ekle
+- Registry'e ekle
 
-**Kaynak İçerik:** /home/mhbd/pro/Neoesis/lessons/[konu-slug]/[order]-[slug].md
-
-**Hedef Dosya:** /home/mhbd/pro/Neoesis/app/src/lessons/[order]-[slug].tsx
-
-**Site Planı (Navigasyon Context):**
-- Toplam sayfa: [TOTAL]
-- Önceki sayfa: [PREV_SLUG] (varsa)
-- Sonraki sayfa: [NEXT_SLUG] (varsa)
-- Section: "fundamentals" (varsayılan)
-
-**Talimatlar:**
-
-1. **Markdown Dosyasını Oku:**
-   - Tüm içeriği al
-   - Frontmatter metadata'yı parse et
-   - Görsel/bileşen gereksinimlerini anla
-
-2. **TSX Dosyası Oluştur:**
-
-   **LessonMeta Objesi:**
-   ```tsx
-   // AI:PROTECTED - Do not modify meta structure
-   export const meta: LessonMeta = {
-     slug: "[slug]",
-     title: "[title]",
-     order: [order],
-     section: "fundamentals",
-     description: "[description]",
-     estimatedMinutes: [estimatedMinutes],
-     objectives: [ /* öğrenme hedefleri */ ],
-     quiz: { /* eğer varsa */ }
-   };
-   ```
-
-   **Component:**
-   ```tsx
-   // AI:SAFE-EDIT START - Lesson content
-   export default function [PascalCase]Lesson() {
-     return (
-       // Markdown içeriğini JSX'e dönüştür
-     )
-   }
-   // AI:SAFE-EDIT END
-   ```
-
-3. **Bileşen Türüne Göre Implement Et:**
-
-   [Eğer type === "text":]
-   - Basit prose layout kullan
-   - Animasyon: animations.fadeIn
-
-   [Eğer type === "3d-animation":]
-   - React Three Fiber import et
-   - Canvas, OrbitControls ekle
-   - Markdown'daki model gereksinimlerine göre 3D sahneyi oluştur
-
-   [Eğer type === "2d-animation":]
-   - Framer Motion kullan
-   - Markdown'daki animasyon akışını implement et
-
-   [Eğer type === "interactive":]
-   - İnteraktif bileşenler ekle (hotspot, tooltip)
-
-   [Eğer type === "quiz":]
-   - Quiz component'ini import et
-   - Sorular ve cevapları ekle
-
-4. **Kalite Standartları:**
-   - TypeScript strict mode
-   - Tailwind CSS v4 (logical properties: ps, pe, ms, me)
-   - WCAG 2.1 AA uyumlu
-   - Responsive tasarım (mobile, tablet, desktop)
-   - AI:SAFE-EDIT ve AI:PROTECTED markerları koy
-
-5. **Registry'e Ekle:**
-   - /home/mhbd/pro/Neoesis/app/src/lessons/index.ts dosyasını güncelle
-   - Import ekle: import * as Lesson[N][Slug] from './[order]-[slug]'
-   - lessonModules objesine ekle
-
-**Çıktı:** [order]-[slug].tsx dosyası + index.ts güncellenmiş
-
-**Kılavuz:** /home/mhbd/pro/Neoesis/app/CLAUDE.md
+Çıktı: app/src/lessons/[order]-[slug].tsx
 ```
 
-**Kod tamamlandığını doğrula:**
-```bash
-Dosya var mı: /home/mhbd/pro/Neoesis/app/src/lessons/[order]-[slug].tsx
+**C. Kalite Kontrolü:**
+```
+- TypeScript check
+- ESLint check
+- İlerleme bildir
 ```
 
-##### C. Kalite Kontrolü (Orkestratör)
+**Döngü sonuna kadar devam et**
 
-**Kullanıcıya bildir:**
-```
-   ✅ Kod hazır!
-   🧪 Kalite kontrolü yapılıyor...
-```
-
-**Testleri çalıştır:**
-
-```bash
-cd /home/mhbd/pro/Neoesis/app
-
-# TypeScript kontrolü
-pnpm typecheck
-
-# ESLint kontrolü
-pnpm lint
-```
-
-**Hata Kontrolü:**
-
-**Senaryo 1: Hata YOK**
-```
-   ✅ TypeScript: Passed
-   ✅ ESLint: Passed
-   ✅ Sayfa [N]/[TOTAL] tamamlandı!
-```
-
-**State güncelle:**
-```json
-{
-  "completedPages": [...prev, "[slug]"],
-  "currentPage": [N+1]
-}
-```
-
-**Kullanıcıya ilerleme bildir:**
-```
-✅ Sayfa [N]/[TOTAL] tamamlandı: "[BAŞLIK]"
-   • [Bileşen özellikleri]
-   • Tüm testler başarılı
-
-📊 İlerleme: ▓▓▓▓▓▓▓▓░░░░░░ [%]
-
-⏳ Sonraki sayfa: "[NEXT_TITLE]" hazırlanıyor...
-```
-
-**Sonraki sayfaya geç (döngü devam eder)**
+**Teslim Et**
 
 ---
 
-**Senaryo 2: Hata VAR**
-```
-   ❌ Hata bulundu! Düzeltiliyor...
-
-   [Hata detayı]
-```
-
-**Hata Düzeltme Döngüsü:**
-
-```markdown
-@BaşMühendis
-
-## Görev: Hatayı Düzelt
-
-**Dosya:** /home/mhbd/pro/Neoesis/app/src/lessons/[order]-[slug].tsx
-
-**Hata Çıktısı:**
-```
-[Tam hata mesajı buraya]
-```
-
-**Talimatlar:**
-1. Hatayı analiz et
-2. İlgili kısmı düzelt
-3. Dosyayı kaydet
-
-**Tekrar test edilecek:**
-- pnpm typecheck
-- pnpm lint
-```
-
-**Maksimum 3 deneme:**
-- Deneme 1: Düzelt → Test
-- Deneme 2: Düzelt → Test
-- Deneme 3: Düzelt → Test
-- Hala hata varsa → Kullanıcıya bildir, manuel müdahale iste
-
----
-
-#### 6.3 Tüm Sayfalar Tamamlandığında
-
-```
-🎉 Tüm sayfalar hazır!
-
-📊 Özet:
-   ✅ [N] sayfa oluşturuldu
-   ✅ [X] 3D animasyon
-   ✅ [Y] 2D animasyon
-   ✅ [Z] Quiz
-   ✅ Tüm testler başarılı
-
-⏳ Final kontroller yapılıyor...
-```
-
-**State güncelle:**
-```json
-{
-  "currentPhase": 4,
-  "status": "testing"
-}
-```
-
----
-
-### Adım 7: AŞAMA 5 - Teslimat
+### Adım 7: AŞAMA 5 - Teslimat (Tüm Seviyeler İçin Ortak)
 
 #### 7.1 Final Audit
 
@@ -632,53 +553,29 @@ pnpm lint
 Test ediliyor:
 ⏳ TypeScript...
 ⏳ ESLint...
-⏳ Unit Tests...
-⏳ E2E Tests...
-⏳ Accessibility...
-⏳ Performance...
+⏳ Build...
 ```
 
 **Tüm testleri çalıştır:**
 
 ```bash
-cd /home/mhbd/pro/Neoesis/app
+cd app
 
-pnpm audit:all
+pnpm typecheck
+pnpm lint
+pnpm build
 ```
 
 **Sonuçları raporla:**
 ```
 ✅ TypeScript: Passed
 ✅ ESLint: Passed
-✅ Unit Tests: [X]/[X] passed
-✅ E2E Tests: [Y]/[Y] passed
-✅ Accessibility: 0 violations (WCAG 2.1 AA)
-✅ Performance: LCP [X]s (< 1.8s) ✓
-✅ Bundle Size: [X]KB (< 200KB) ✓
+✅ Build: Successful
 
 🎉 Tüm kalite kontrolleri başarılı!
 ```
 
-#### 7.2 Production Build
-
-```bash
-pnpm build
-```
-
-**Build sonucunu göster:**
-```
-✅ Build Başarılı!
-
-📦 Bundle Sizes:
-   / (home)          : [X] KB
-   /toc              : [Y] KB
-   /lesson/[slug]    : [Z] KB
-
-✓ Tüm rotalar optimize edildi
-✓ Static sayfalar oluşturuldu: [N]
-```
-
-#### 7.3 Teslimat Mesajı
+#### 7.2 Teslimat Mesajı
 
 **Kullanıcıya nihai mesaj:**
 
@@ -689,6 +586,7 @@ pnpm build
 
 📚 Ders: "[KONU]"
 🎯 Hedef: [HEDEF_KITLE]
+📊 Detay: Seviye [SEVİYE] - [SEVİYE_ADI]
 
 📊 İÇERİK ÖZETİ:
    • Toplam sayfa: [N]
@@ -715,7 +613,7 @@ pnpm build
 1. Terminal açın
 2. Şu komutları çalıştırın:
 
-   cd /home/mhbd/pro/Neoesis/app
+   cd app
    pnpm dev
 
 3. Tarayıcınızda açın:
@@ -733,9 +631,9 @@ pnpm build
    • İstediğiniz zaman kaldığınız yerden devam edebilirsiniz
 
 📁 DOSYA KONUMLARI:
-   • Ders planı: /lessons/[konu-slug]/metadata.json
-   • İçerikler: /lessons/[konu-slug]/*.md
-   • Kod dosyaları: /app/src/lessons/*.tsx
+   • Ders planı: lessons/[konu-slug]/metadata.json
+   • İçerikler: lessons/[konu-slug]/*.md
+   • Kod dosyaları: app/src/lessons/*.tsx
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -746,147 +644,34 @@ pnpm build
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
-#### 7.4 State Tamamlama
-
-```json
-{
-  "currentPhase": 5,
-  "status": "completed",
-  "completedAt": "[ISO timestamp]",
-  "deliveryStatus": "success",
-  "finalStats": {
-    "totalPages": [N],
-    "totalMinutes": [M],
-    "componentsUsed": ["3d", "2d", "quiz", ...],
-    "testsResults": "all passed"
-  }
-}
-```
-
----
-
-## 🚨 Hata Durumları ve Çözümleri
-
-### Hata 1: Baş Öğretmen Plan Oluşturamadı
-
-**Belirti:**
-- metadata.json dosyası yok
-- Veya eksik/hatalı JSON
-
-**Çözüm:**
-1. Görevi tekrar gönder (farklı prompt ile)
-2. Şablon dosyasını hatırlat
-3. Hala başarısız → Kullanıcıya bildir, manuel yardım iste
-
-### Hata 2: Baş Mühendis Kod Yazamadı
-
-**Belirti:**
-- TSX dosyası yok
-- Veya syntax hatası
-
-**Çözüm:**
-1. Hata mesajını göster
-2. Düzeltme talimatı ver
-3. Maksimum 3 deneme
-4. Başarısız → O sayfayı atla, kullanıcıya bildir
-
-### Hata 3: Testler Sürekli Başarısız
-
-**Belirti:**
-- 3 denemeden sonra hala TypeScript/ESLint hatası
-
-**Çözüm:**
-```
-❌ Teknik bir sorunla karşılaştık:
-
-Sayfa: [N]/[TOTAL] - "[BAŞLIK]"
-Hata: [HATA MESAJI]
-
-🔧 Çözüm seçenekleri:
-1. [Manuel] → Size dosya yolunu vereyim, manuel düzeltin
-2. [Atla] → Bu sayfayı atlayıp devam edelim
-3. [İptal] → Şimdilik burada duralım
-
-Nasıl ilerlemek istersiniz?
-```
-
-### Hata 4: Kullanıcı İptal Ediyor
-
-**Belirti:**
-- Kullanıcı "dur", "iptal", "vazgeç" gibi komutlar verdi
-
-**Çözüm:**
-```
-⏸️  Süreç durduruldu.
-
-💾 İlerleme kaydedildi:
-   • [N]/[TOTAL] sayfa tamamlandı
-   • State: /tmp/neosis-state-[ID].json (geçici)
-
-❓ Ne yapmak istersiniz?
-   [Devam Et] → Kaldığımız yerden devam edelim
-   [Yeni Başla] → Yeni bir konu ile başlayalım
-   [Çık] → Şimdilik bitir
-```
-
----
-
-## 📋 Checklist (Her Aşama İçin)
-
-Orkestratör olarak her aşamada bunları kontrol et:
-
-### ✅ Aşama 1: Başlatma
-- [ ] .CLAUDE.md dosyası okundu
-- [ ] Kullanıcıdan konu alındı
-- [ ] Hedef kitle belirlendi
-- [ ] Özel istekler kaydedildi
-- [ ] Özet gösterildi ve onaylandı
-- [ ] State oluşturuldu
-
-### ✅ Aşama 2: Planlama
-- [ ] Baş Öğretmen'e görev delege edildi
-- [ ] metadata.json oluşturuldu
-- [ ] Plan kullanıcıya sunuldu
-- [ ] Kullanıcı onayı alındı
-- [ ] State güncellendi
-
-### ✅ Aşama 3: Tasarım
-- [ ] Marka tercihi soruldu
-- [ ] Baş Mühendis'e bildirildi (gerekirse)
-- [ ] State güncellendi
-
-### ✅ Aşama 4: Üretim (Her sayfa için)
-- [ ] Baş Öğretmen'e içerik görevi verildi
-- [ ] .md dosyası oluşturuldu
-- [ ] Baş Mühendis'e kod görevi verildi
-- [ ] .tsx dosyası oluşturuldu
-- [ ] index.ts güncellendi
-- [ ] TypeScript kontrolü yapıldı
-- [ ] ESLint kontrolü yapıldı
-- [ ] Hata varsa düzeltildi (max 3 deneme)
-- [ ] Kullanıcıya ilerleme bildirildi
-- [ ] State güncellendi
-
-### ✅ Aşama 5: Teslimat
-- [ ] Tüm sayfalar tamamlandı
-- [ ] audit:all çalıştırıldı
-- [ ] build testi yapıldı
-- [ ] Teslimat mesajı gönderildi
-- [ ] Başlatma talimatları verildi
-- [ ] State completed olarak işaretlendi
-
 ---
 
 ## 🎯 Başarı Kriterleri
 
 Bu workflow'u başarılı sayabilmek için:
 
-1. ✅ Kullanıcıdan net bilgi alındı
-2. ✅ Pedagojik plan oluşturuldu ve onaylandı
-3. ✅ Tüm sayfalar hatasız üretildi
-4. ✅ Kalite testleri geçti
-5. ✅ Build başarılı
-6. ✅ Kullanıcıya net talimatlar verildi
+1. ✅ Kullanıcıdan net bilgi alındı (5 soru)
+2. ✅ Detay seviyesine uygun işlem yapıldı
+3. ✅ Pedagojik plan oluşturuldu ve onaylandı
+4. ✅ Tüm sayfalar hatasız üretildi
+5. ✅ Kalite testleri geçti
+6. ✅ Build başarılı
+7. ✅ Kullanıcıya net talimatlar verildi
+
+---
+
+## 📋 Detay Seviyesi Karşılaştırması
+
+| Özellik | Seviye 1 | Seviye 2 | Seviye 3 | Seviye 4 |
+|---------|----------|----------|----------|----------|
+| **Süre** | 5-8 dk | 10-15 dk | 15-20 dk | 20-30 dk |
+| **Persona** | Yok | Baş Mühendis | İkisi de | İkisi de |
+| **İterasyon** | Yok | Minimal | 2 oturum | Her sayfa |
+| **Kalite** | Temel | Orta | İyi | En yüksek |
+| **İçerik** | 1-2 paragraf | 2-3 paragraf | 3-4 paragraf | 4-6 paragraf |
+| **Sayfa** | 3-5 | 4-6 | 5-7 | 6-8 |
+| **Test** | Minimal | Orta | İyi | Maksimum |
+| **Önerilen** | Prototip | Hızlı Demo | Üretim | Ürün |
 
 ---
 
@@ -896,7 +681,7 @@ Bu adımları tamamladığında, kullanıcının elinde:
 
 - ✅ Çalışan bir Next.js uygulaması
 - ✅ [N] sayfa interaktif ders içeriği
-- ✅ 3D/2D animasyonlar (eğer uygunsa)
+- ✅ 3D/2D animasyonlar (seviyeye göre)
 - ✅ Quiz/testler
 - ✅ Kaliteli, erişilebilir, performanslı kod
 

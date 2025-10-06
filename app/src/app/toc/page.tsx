@@ -95,10 +95,10 @@ export default function TableOfContentsPage() {
             </div>
             <div>
               <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                Table of Contents
+                İçindekiler
               </h1>
               <p className="text-muted-foreground">
-                Explore our complete curriculum
+                Tüm müfredatımızı keşfedin
               </p>
             </div>
           </div>
@@ -137,10 +137,10 @@ export default function TableOfContentsPage() {
                 </div>
                 <div className="space-y-2">
                   <h3 className="text-lg font-semibold text-foreground">
-                    No lessons match your filters
+                    Filtrelerinizle eşleşen ders bulunamadı
                   </h3>
                   <p className="text-sm text-muted-foreground">
-                    Try adjusting your search query or selected sections
+                    Arama sorgunuzu veya seçili bölümleri ayarlamayı deneyin
                   </p>
                 </div>
                 <button
@@ -150,7 +150,7 @@ export default function TableOfContentsPage() {
                   }}
                   className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 >
-                  Clear filters
+                  Filtreleri temizle
                 </button>
               </div>
             </div>

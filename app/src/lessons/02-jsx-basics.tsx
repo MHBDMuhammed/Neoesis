@@ -3,19 +3,19 @@ import type { LessonMeta } from '@/types/lesson';
 // AI:PROTECTED - Do not modify meta structure
 export const meta: LessonMeta = {
   slug: 'jsx-basics',
-  title: 'JSX Basics',
+  title: 'JSX Temelleri',
   order: 2,
   section: 'fundamentals',
-  description: 'Master JSX syntax and learn how to write HTML-like code in JavaScript.',
+  description: 'JSX sözdiziminde ustalaşın ve JavaScript\'te HTML benzeri kod yazmayı öğrenin.',
   estimatedMinutes: 10,
   objectives: [
-    'Understand what JSX is and how it differs from regular JavaScript',
-    'Learn JSX syntax rules and common patterns',
-    'Write expressions and conditionals inside JSX'
+    'JSX\'in ne olduğunu ve normal JavaScript\'ten nasıl farklı olduğunu anlama',
+    'JSX sözdizimi kurallarını ve yaygın kalıpları öğrenme',
+    'JSX içinde ifadeler ve koşullar yazma'
   ],
   quiz: {
     id: 'quiz-jsx-basics',
-    prompt: 'What is the correct way to use a JavaScript expression in JSX?',
+    prompt: 'JSX\'te JavaScript ifadesi kullanmanın doğru yolu nedir?',
     type: 'single-choice',
     options: [
       '{{ expression }}',
@@ -24,7 +24,7 @@ export const meta: LessonMeta = {
       '${ expression }'
     ],
     correctAnswer: 1,
-    explanation: 'In JSX, you embed JavaScript expressions using single curly braces: { expression }. This allows you to use variables, functions, and any valid JavaScript expression.',
+    explanation: 'JSX\'te, JavaScript ifadelerini tek süslü parantez kullanarak gömersiniz: { expression }. Bu, değişkenleri, fonksiyonları ve geçerli herhangi bir JavaScript ifadesini kullanmanıza olanak tanır.',
     maxAttempts: 3
   }
 };

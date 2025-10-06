@@ -3,19 +3,19 @@ import type { LessonMeta } from '@/types/lesson';
 // AI:PROTECTED - Do not modify meta structure
 export const meta: LessonMeta = {
   slug: 'intro-to-react',
-  title: 'Introduction to React',
+  title: 'React\'e Giriş',
   order: 1,
   section: 'fundamentals',
-  description: 'Learn the basics of React: components, props, and state management fundamentals.',
+  description: 'React\'in temellerini öğrenin: bileşenler, props ve state yönetimi temelleri.',
   estimatedMinutes: 12,
   objectives: [
-    'Understand what React is and why it is useful for building UIs',
-    'Create your first React component using function syntax',
-    'Learn how to pass data between components using props'
+    'React\'in ne olduğunu ve UI oluşturmak için neden yararlı olduğunu anlama',
+    'Fonksiyon sözdizimi kullanarak ilk React bileşeninizi oluşturma',
+    'Props kullanarak bileşenler arasında veri iletmeyi öğrenme'
   ],
   quiz: {
     id: 'quiz-intro-to-react',
-    prompt: 'Which function syntax creates a React component?',
+    prompt: 'Hangi fonksiyon sözdizimi bir React bileşeni oluşturur?',
     type: 'single-choice',
     options: [
       'createElement()',
@@ -24,7 +24,7 @@ export const meta: LessonMeta = {
       'class MyComponent extends Component {}'
     ],
     correctAnswer: 1,
-    explanation: 'React components are regular JavaScript functions that return JSX. Modern React prefers function components over class components.',
+    explanation: 'React bileşenleri, JSX döndüren normal JavaScript fonksiyonlarıdır. Modern React, sınıf bileşenlerinden ziyade fonksiyon bileşenlerini tercih eder.',
     maxAttempts: 3
   }
 };
@@ -33,65 +33,65 @@ export const meta: LessonMeta = {
 export default function IntroLesson() {
   return (
     <article className="prose prose-slate max-w-none">
-      <h1>Introduction to React</h1>
+      <h1>React'e Giriş</h1>
 
       <p>
-        React is a JavaScript library for building user interfaces.
-        It was created by Facebook and is now maintained by Meta and
-        the open-source community. React has become one of the most
-        popular tools for building modern web applications.
+        React, kullanıcı arayüzleri oluşturmak için bir JavaScript kütüphanesidir.
+        Facebook tarafından oluşturulmuş ve şu anda Meta ve açık kaynak topluluğu
+        tarafından sürdürülmektedir. React, modern web uygulamaları geliştirmek
+        için en popüler araçlardan biri haline gelmiştir.
       </p>
 
-      <h2>Why React?</h2>
+      <h2>Neden React?</h2>
       <p>
-        React makes it easier to build interactive UIs by breaking
-        them into reusable components. Instead of manipulating the DOM
-        directly, you describe what the UI should look like, and React
-        handles the updates efficiently.
+        React, interaktif kullanıcı arayüzlerini yeniden kullanılabilir bileşenlere
+        bölerek oluşturmayı kolaylaştırır. DOM'u doğrudan manipüle etmek yerine,
+        kullanıcı arayüzünün nasıl görünmesi gerektiğini tanımlarsınız ve React
+        güncellemeleri verimli bir şekilde yönetir.
       </p>
 
-      <h3>Key Benefits</h3>
+      <h3>Temel Avantajlar</h3>
       <ul>
-        <li><strong>Component-Based:</strong> Build encapsulated components that manage their own state</li>
-        <li><strong>Declarative:</strong> Design simple views for each state of your application</li>
-        <li><strong>Learn Once, Write Anywhere:</strong> Use React on the server, mobile, and VR</li>
+        <li><strong>Bileşen Tabanlı:</strong> Kendi state'lerini yöneten kapsüllenmiş bileşenler oluşturun</li>
+        <li><strong>Bildirimsel:</strong> Uygulamanızın her state'i için basit görünümler tasarlayın</li>
+        <li><strong>Bir Kez Öğren, Her Yerde Kullan:</strong> React'i sunucuda, mobilde ve VR'da kullanın</li>
       </ul>
 
-      <h2>Your First Component</h2>
+      <h2>İlk Bileşeniniz</h2>
       <p>
-        A React component is a JavaScript function that returns JSX
-        (JavaScript XML). Here is a simple example:
+        Bir React bileşeni, JSX (JavaScript XML) döndüren bir JavaScript fonksiyonudur.
+        İşte basit bir örnek:
       </p>
 
       <pre><code>{`function Welcome() {
-  return <h1>Hello, React!</h1>;
+  return <h1>Merhaba, React!</h1>;
 }`}</code></pre>
 
       <p>
-        This component renders a heading with the text "Hello, React!".
-        You can use this component anywhere in your app by writing
-        <code>&lt;Welcome /&gt;</code>.
+        Bu bileşen "Merhaba, React!" metnini içeren bir başlık oluşturur.
+        Bu bileşeni uygulamanızın herhangi bir yerinde
+        <code>&lt;Welcome /&gt;</code> yazarak kullanabilirsiniz.
       </p>
 
-      <h2>Props: Passing Data</h2>
+      <h2>Props: Veri İletme</h2>
       <p>
-        Components can accept inputs called "props" (short for properties).
-        Props let you pass data from parent components to child components:
+        Bileşenler "props" (properties'in kısaltması) adı verilen girdileri kabul edebilir.
+        Props, üst bileşenlerden alt bileşenlere veri iletmenizi sağlar:
       </p>
 
       <pre><code>{`function Greeting(props) {
-  return <h1>Hello, {props.name}!</h1>;
+  return <h1>Merhaba, {props.name}!</h1>;
 }
 
-// Usage:
-<Greeting name="Alice" />
-// Renders: <h1>Hello, Alice!</h1>`}</code></pre>
+// Kullanım:
+<Greeting name="Ayşe" />
+// Çıktı: <h1>Merhaba, Ayşe!</h1>`}</code></pre>
 
-      <h2>Next Steps</h2>
+      <h2>Sonraki Adımlar</h2>
       <p>
-        Now that you understand the basics of React components and props,
-        you are ready to dive deeper into building interactive user interfaces.
-        In the next lesson, we will explore React components in more detail.
+        Artık React bileşenlerinin ve props'ların temellerini anladığınıza göre,
+        interaktif kullanıcı arayüzleri oluşturma konusunda daha derine inmeye hazırsınız.
+        Bir sonraki derste, React bileşenlerini daha ayrıntılı olarak inceleyeceğiz.
       </p>
     </article>
   );
