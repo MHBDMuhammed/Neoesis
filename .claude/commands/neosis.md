@@ -646,6 +646,56 @@ pnpm build
 
 ---
 
+## 📚 İçerik Bileşenleri Referansı
+
+### Kullanılabilir React Bileşenleri
+
+Ders içerikleri oluştururken aşağıdaki 8 özel bileşen kullanılabilir:
+
+**Temel Bileşenler:**
+1. **Callout** - Önemli notlar, uyarılar, ipuçları (5 varyant: info, warning, success, error, tip)
+2. **CodeBlock** - Syntax highlighting, kopyalama, satır vurgulama (30+ dil desteği)
+3. **KeyConcepts** - Terim tanımları ve kavram kartları (2 sütun grid)
+4. **StepGuide** - Numaralı adım adım talimatlar (bağlantı çizgisi ile)
+
+**Organizasyon Bileşenleri:**
+5. **Tabs** - Alternatif içerikler için sekmeli görünüm
+6. **Accordion** - FAQ ve katlanabilir bölümler
+
+**Medya Bileşenleri:**
+7. **Figure** - Next.js Image ile görseller ve diyagramlar (caption desteği)
+8. **ComparisonTable** - Karşılaştırma tabloları (boolean support: ✓/✗)
+
+**Import:**
+```tsx
+import {
+  Callout,
+  CodeBlock,
+  KeyConcepts,
+  KeyConcept,
+  StepGuide,
+  Step,
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+  Figure,
+  ComparisonTable,
+} from '@/components/lesson/content';
+```
+
+**Detaylı dokümantasyon:**
+- Bileşen kullanım örnekleri: `app/CLAUDE.md` → "📚 İçerik Bileşenleri Kullanım Kılavuzu"
+- API referansı: `app/src/components/lesson/content/README.md`
+
+**Not:** Baş Öğretmen ve Baş Mühendis personaları bu bileşenleri kullanarak zengin, interaktif ve pedagojik açıdan etkili içerikler oluşturmalıdır.
+
+---
+
 ## 🎯 Başarı Kriterleri
 
 Bu workflow'u başarılı sayabilmek için:

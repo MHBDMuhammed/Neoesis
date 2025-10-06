@@ -452,6 +452,604 @@ import { RadioGroup } from '@/components/ui/radio-group';
 
 ---
 
+## 📚 İçerik Bileşenleri Kullanım Kılavuzu
+
+### Genel Bakış
+
+Ders içeriklerini zenginleştirmek için 8 özel içerik bileşeni mevcuttur. Bu bileşenler, bilgiyi farklı formatlarda sunarak öğrenme deneyimini geliştirir.
+
+**Bileşen lokasyonu:** `@/components/lesson/content`
+
+**Import:**
+```tsx
+import {
+  Callout,
+  CodeBlock,
+  KeyConcepts,
+  KeyConcept,
+  StepGuide,
+  Step,
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+  Figure,
+  ComparisonTable,
+} from '@/components/lesson/content';
+```
+
+### 1. Callout - Önemli Bilgileri Vurgulama
+
+**Ne zaman kullan:**
+- Önemli notlar ve uyarılar için
+- İpuçları ve püf noktalar için
+- Başarı mesajları ve hatırlatmalar için
+- Hata senaryoları ve dikkat edilmesi gerekenler için
+
+**5 varyant:**
+- `info` - Bilgilendirme (mavi)
+- `warning` - Uyarı (sarı)
+- `success` - Başarı (yeşil)
+- `error` - Hata (kırmızı)
+- `tip` - İpucu (mor)
+
+**Kullanım:**
+```tsx
+<Callout type="info" title="Bilgi">
+  React bileşenleri fonksiyon veya class olarak tanımlanabilir.
+</Callout>
+
+<Callout type="warning">
+  Props değiştirilemez! Mutlaka yeni bir obje oluşturun.
+</Callout>
+
+<Callout type="tip" title="Pro İpucu">
+  useState hook'u ile component state'i yönetebilirsiniz.
+</Callout>
+```
+
+**Props:**
+- `type` (required): `'info' | 'warning' | 'success' | 'error' | 'tip'`
+- `title` (optional): Başlık metni
+- `children`: İçerik
+- `icon` (optional): Özel ikon
+- `className` (optional): CSS sınıfları
+
+### 2. CodeBlock - Kod Örnekleri
+
+**Ne zaman kullan:**
+- Kod örnekleri göstermek için
+- Syntax highlighting gerektiğinde
+- Kullanıcının kopyalayabileceği kod parçaları için
+- Belirli satırları vurgulamak istediğinde
+
+**Özellikler:**
+- Syntax highlighting (Prism.js)
+- Kopyala butonu
+- Satır numaraları
+- Satır vurgulama
+- Dosya adı gösterimi
+- 30+ dil desteği
+
+**Kullanım:**
+```tsx
+<CodeBlock language="tsx" filename="App.tsx">
+{`function App() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <button onClick={() => setCount(count + 1)}>
+      Count: {count}
+    </button>
+  );
+}`}
+</CodeBlock>
+
+<CodeBlock
+  language="javascript"
+  highlightLines={[2, 3, 4]}
+  showLineNumbers={true}
+>
+{`function calculateTotal(items) {
+  return items.reduce((sum, item) => {
+    return sum + item.price * item.quantity;
+  }, 0);
+}`}
+</CodeBlock>
+```
+
+**Props:**
+- `children` (required): Kod metni
+- `language` (optional): Dil (default: `'typescript'`)
+- `filename` (optional): Dosya adı
+- `highlightLines` (optional): Vurgulanacak satırlar `[1, 2, 3]`
+- `showLineNumbers` (optional): Satır numaraları (default: `true`)
+- `className` (optional): CSS sınıfları
+
+**Desteklenen diller:**
+`typescript`, `javascript`, `tsx`, `jsx`, `python`, `rust`, `go`, `java`, `cpp`, `c`, `css`, `html`, `json`, `yaml`, `markdown`, `bash`, `sql`, ve daha fazlası.
+
+### 3. KeyConcepts - Temel Kavramlar
+
+**Ne zaman kullan:**
+- Yeni terimleri tanımlarken
+- Anahtar kavramları özetlerken
+- Glossary benzeri yapılar için
+- Karşılaştırma gerektirmeyen tanımlar için
+
+**Kullanım:**
+```tsx
+<KeyConcepts title="React Temel Kavramları">
+  <KeyConcept term="Component">
+    React uygulamasının temel yapı taşı. UI'ı yeniden kullanılabilir
+    parçalara böler.
+  </KeyConcept>
+
+  <KeyConcept term="Props">
+    Parent bileşenden child bileşene veri aktarmak için kullanılan
+    salt-okunur parametreler.
+  </KeyConcept>
+
+  <KeyConcept term="State">
+    Bileşenin içinde tutulan ve değişebilen veriler. useState hook'u
+    ile yönetilir.
+  </KeyConcept>
+
+  <KeyConcept term="Hook">
+    React 16.8 ile gelen, fonksiyon bileşenlerinde state ve lifecycle
+    kullanmayı sağlayan özel fonksiyonlar.
+  </KeyConcept>
+</KeyConcepts>
+```
+
+**Props (KeyConcepts):**
+- `title` (optional): Başlık (default: `'Key Concepts'`)
+- `children`: KeyConcept bileşenleri
+- `className` (optional): CSS sınıfları
+
+**Props (KeyConcept):**
+- `term` (required): Terim/kavram adı
+- `children`: Tanım/açıklama
+- `className` (optional): CSS sınıfları
+
+**Layout:**
+- Desktop: 2 sütun grid
+- Mobile: Tek sütun
+- Her kavram ayrı kartda gösterilir
+
+### 4. StepGuide - Adım Adım Talimatlar
+
+**Ne zaman kullan:**
+- Kurulum talimatları için
+- Adım adım işlemler için
+- Tutorial benzeri içerikler için
+- Sıralı görevler için
+
+**Kullanım:**
+```tsx
+<StepGuide title="React Projesine Başlama">
+  <Step number={1} title="Proje Oluştur">
+    <CodeBlock language="bash">
+      npx create-react-app my-app
+    </CodeBlock>
+    <p>Create React App ile yeni bir proje oluşturun.</p>
+  </Step>
+
+  <Step number={2} title="Projeyi Başlat">
+    <CodeBlock language="bash">
+      cd my-app && npm start
+    </CodeBlock>
+    <p>Geliştirme sunucusunu başlatın.</p>
+  </Step>
+
+  <Step number={3} title="Tarayıcıda Aç">
+    <p>
+      <a href="http://localhost:3000">http://localhost:3000</a> adresine
+      gidin ve uygulamanızı görün.
+    </p>
+  </Step>
+</StepGuide>
+```
+
+**Props (StepGuide):**
+- `title` (optional): Başlık (default: `'Step-by-Step Guide'`)
+- `children`: Step bileşenleri
+- `className` (optional): CSS sınıfları
+
+**Props (Step):**
+- `number` (required): Adım numarası
+- `title` (required): Adım başlığı
+- `children`: Adım içeriği
+- `className` (optional): CSS sınıfları
+
+**Özellikler:**
+- Numaralı adım daireleri
+- Bağlantı çizgisi (sol kenar)
+- Kademeli animasyon (stagger effect)
+
+### 5. Tabs - Sekmeli İçerik
+
+**Ne zaman kullan:**
+- Alternatif yaklaşımlar göstermek için
+- Farklı dillerde kod örnekleri için
+- İlişkili ama ayrı içerikler için
+- Alan tasarrufu yapmak istediğinde
+
+**Kullanım:**
+```tsx
+<Tabs defaultValue="function">
+  <TabsList>
+    <TabsTrigger value="function">Function Component</TabsTrigger>
+    <TabsTrigger value="class">Class Component</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="function">
+    <CodeBlock language="tsx">
+{`function Welcome({ name }) {
+  return <h1>Hello, {name}</h1>;
+}`}
+    </CodeBlock>
+  </TabsContent>
+
+  <TabsContent value="class">
+    <CodeBlock language="tsx">
+{`class Welcome extends React.Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}`}
+    </CodeBlock>
+  </TabsContent>
+</Tabs>
+```
+
+**Props:**
+- `defaultValue` (required): Varsayılan aktif sekme
+- `children`: TabsList ve TabsContent'ler
+
+**Yaygın kullanım senaryoları:**
+```tsx
+// Farklı framework'ler
+<Tabs defaultValue="react">
+  <TabsList>
+    <TabsTrigger value="react">React</TabsTrigger>
+    <TabsTrigger value="vue">Vue</TabsTrigger>
+    <TabsTrigger value="angular">Angular</TabsTrigger>
+  </TabsList>
+  {/* ... */}
+</Tabs>
+
+// Farklı diller
+<Tabs defaultValue="js">
+  <TabsList>
+    <TabsTrigger value="js">JavaScript</TabsTrigger>
+    <TabsTrigger value="ts">TypeScript</TabsTrigger>
+  </TabsList>
+  {/* ... */}
+</Tabs>
+```
+
+### 6. Accordion - Katlanabilir Bölümler
+
+**Ne zaman kullan:**
+- FAQ'ler için
+- İsteğe bağlı detaylar için
+- Uzun içeriği organize etmek için
+- İlermiş bilgileri gizlemek için
+
+**Kullanım:**
+```tsx
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>useState hook'u ne yapar?</AccordionTrigger>
+    <AccordionContent>
+      <p>
+        useState, fonksiyon bileşenlerinde state yönetimi sağlayan bir
+        React hook'udur.
+      </p>
+      <CodeBlock language="tsx">
+{`const [count, setCount] = useState(0);`}
+      </CodeBlock>
+    </AccordionContent>
+  </AccordionItem>
+
+  <AccordionItem value="item-2">
+    <AccordionTrigger>useEffect ne zaman kullanılır?</AccordionTrigger>
+    <AccordionContent>
+      <p>
+        useEffect, side effect'leri yönetmek için kullanılır:
+        API çağrıları, subscriptions, DOM manipülasyonu vb.
+      </p>
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+**Props:**
+- `type`: `'single'` (tek açık) veya `'multiple'` (çok açık)
+- `collapsible`: Tek tipte, açılanı tekrar kapatabilir mi?
+
+**İpucu:** FAQ formatı için ideal. Kullanıcı sadece ilgilendikleri soruları açar.
+
+### 7. Figure - Görseller ve Diyagramlar
+
+**Ne zaman kullan:**
+- Diyagram ve şemalar için
+- Örnek ekran görüntüleri için
+- Açıklama gerektiren görseller için
+- Caption eklemek istediğinde
+
+**Kullanım:**
+```tsx
+<Figure
+  src="/images/react-component-tree.png"
+  alt="React bileşen ağacı diyagramı"
+  caption="Şekil 1: React bileşenlerinin hiyerarşik yapısı"
+  width={800}
+  height={600}
+/>
+
+{/* Responsive fill mode */}
+<Figure
+  src="/images/hero-diagram.jpg"
+  alt="Hero bölümü"
+  fill
+  className="aspect-video"
+  caption="Responsive görsel örneği"
+/>
+```
+
+**Props:**
+- `src` (required): Görsel URL'i
+- `alt` (required): Erişilebilirlik metni
+- `caption` (optional): Görsel açıklaması
+- `width` (optional): Genişlik (fill=false ise gerekli)
+- `height` (optional): Yükseklik (fill=false ise gerekli)
+- `fill` (optional): Responsive fill mode (default: `false`)
+- `className` (optional): CSS sınıfları
+
+**Özellikler:**
+- Next.js Image optimizasyonu
+- Lazy loading
+- Otomatik responsive sizes
+- Caption ile figcaption elementi
+- Smooth fade-in animasyonu
+
+### 8. ComparisonTable - Karşılaştırma Tabloları
+
+**Ne zaman kullan:**
+- İki veya daha fazla yaklaşımı karşılaştırmak için
+- Özellik listesi göstermek için
+- Versiyonlar arası farkları belirtmek için
+- Boolean özellikleri göstermek için (✓/✗)
+
+**Kullanım:**
+```tsx
+<ComparisonTable
+  title="Class vs Function Components"
+  rowLabels={['Syntax', 'State Yönetimi', 'Lifecycle', 'Performans']}
+  columns={[
+    {
+      header: 'Class Components',
+      rows: [
+        'class syntax kullanır',
+        'this.state ve this.setState',
+        'componentDidMount, componentDidUpdate vb.',
+        'Biraz daha yavaş'
+      ]
+    },
+    {
+      header: 'Function Components',
+      rows: [
+        'function syntax kullanır',
+        'useState hook',
+        'useEffect hook',
+        'Daha hızlı'
+      ]
+    }
+  ]}
+/>
+
+{/* Boolean değerler ile */}
+<ComparisonTable
+  title="React Versiyonları"
+  rowLabels={['Hooks', 'Concurrent Mode', 'Suspense', 'Server Components']}
+  columns={[
+    {
+      header: 'React 17',
+      rows: [true, false, true, false]
+    },
+    {
+      header: 'React 18',
+      rows: [true, true, true, true]
+    }
+  ]}
+/>
+```
+
+**Props:**
+- `title` (optional): Tablo başlığı
+- `columns` (required): Sütun verileri
+- `rowLabels` (optional): Satır etiketleri
+- `className` (optional): CSS sınıfları
+
+**Column Props:**
+- `header`: Sütun başlığı
+- `rows`: Satır verileri (string, boolean, veya ReactNode)
+
+**Boolean rendering:**
+- `true` → ✓ (yeşil check)
+- `false` → ✗ (kırmızı X)
+
+### En İyi Pratikler
+
+#### 1. Bileşenleri Birleştirme
+
+```tsx
+// ✅ İyi: Birden fazla bileşeni birlikte kullan
+<>
+  <Callout type="info" title="Konu Hakkında">
+    Bu bölümde React Hook'larını öğreneceğiz.
+  </Callout>
+
+  <KeyConcepts title="Temel Hook'lar">
+    <KeyConcept term="useState">State yönetimi</KeyConcept>
+    <KeyConcept term="useEffect">Side effects</KeyConcept>
+  </KeyConcepts>
+
+  <StepGuide title="İlk Hook'unuzu Kullanın">
+    <Step number={1} title="Import edin">
+      <CodeBlock language="tsx">
+        {`import { useState } from 'react';`}
+      </CodeBlock>
+    </Step>
+  </StepGuide>
+</>
+```
+
+#### 2. Accessiblity
+
+```tsx
+// ✅ İyi: Her zaman alt text ekle
+<Figure
+  src="/diagram.png"
+  alt="React component lifecycle diagram showing mount, update, and unmount phases"
+  caption="Component yaşam döngüsü"
+/>
+
+// ❌ Kötü: Boş alt text
+<Figure src="/diagram.png" alt="" />
+```
+
+#### 3. Code Blocks
+
+```tsx
+// ✅ İyi: Dil belirt, satır vurgula
+<CodeBlock language="tsx" highlightLines={[3, 4]}>
+{`function App() {
+  const [count, setCount] = useState(0);
+  // Bu satır vurgulanacak
+  const increment = () => setCount(count + 1);
+  return <button onClick={increment}>{count}</button>;
+}`}
+</CodeBlock>
+
+// ❌ Kötü: Dil yok, formatting bozuk
+<CodeBlock>
+  {`function App(){return<div>Hello</div>}`}
+</CodeBlock>
+```
+
+#### 4. İçerik Yapısı
+
+```tsx
+// ✅ İyi: Mantıksal akış
+<>
+  <h2>React Hooks</h2>
+
+  {/* 1. Giriş/Genel Bakış */}
+  <p>Hook'lar React 16.8 ile geldi...</p>
+
+  {/* 2. Temel Kavramlar */}
+  <KeyConcepts>...</KeyConcepts>
+
+  {/* 3. Kod Örneği */}
+  <CodeBlock>...</CodeBlock>
+
+  {/* 4. Adım Adım Uygulama */}
+  <StepGuide>...</StepGuide>
+
+  {/* 5. Dikkat Edilmesi Gerekenler */}
+  <Callout type="warning">...</Callout>
+
+  {/* 6. İleri Seviye (Accordion'da) */}
+  <Accordion>...</Accordion>
+</>
+```
+
+### Markdown'dan React'e Dönüşüm Kuralları
+
+**Callout:**
+```markdown
+> **Bilgi:** React bileşenleri yeniden kullanılabilir.
+```
+↓
+```tsx
+<Callout type="info" title="Bilgi">
+  React bileşenleri yeniden kullanılabilir.
+</Callout>
+```
+
+**Code Blocks:**
+```markdown
+```tsx
+function App() {
+  return <div>Hello</div>;
+}
+```
+```
+↓
+```tsx
+<CodeBlock language="tsx">
+{`function App() {
+  return <div>Hello</div>;
+}`}
+</CodeBlock>
+```
+
+**Tanımlar:**
+```markdown
+**Component**: React'in temel yapı taşı
+**Props**: Bileşenler arası veri aktarımı
+```
+↓
+```tsx
+<KeyConcepts>
+  <KeyConcept term="Component">React'in temel yapı taşı</KeyConcept>
+  <KeyConcept term="Props">Bileşenler arası veri aktarımı</KeyConcept>
+</KeyConcepts>
+```
+
+**Adım Adım:**
+```markdown
+1. Projeyi oluştur: `npx create-react-app`
+2. Sunucuyu başlat: `npm start`
+3. Tarayıcıda aç: http://localhost:3000
+```
+↓
+```tsx
+<StepGuide>
+  <Step number={1} title="Projeyi Oluştur">
+    <CodeBlock language="bash">npx create-react-app</CodeBlock>
+  </Step>
+  <Step number={2} title="Sunucuyu Başlat">
+    <CodeBlock language="bash">npm start</CodeBlock>
+  </Step>
+  <Step number={3} title="Tarayıcıda Aç">
+    <p>http://localhost:3000 adresine gidin.</p>
+  </Step>
+</StepGuide>
+```
+
+### Performans İpuçları
+
+1. **Lazy Loading:** Ağır görseller için `Figure` bileşeni otomatik lazy loading yapar
+2. **Code Splitting:** `CodeBlock` içindeki Prism temalarını dinamik import edilebilir
+3. **Memoization:** Değişmeyen içerikler için `React.memo()` kullanılabilir
+
+### Detaylı Dokümantasyon
+
+Tüm bileşenlerin detaylı API dokümantasyonu için:
+```
+app/src/components/lesson/content/README.md
+```
+
+---
+
 ## ⚠️ Önemli Kurallar ve Kısıtlamalar
 
 ### ✅ GÜVENLİ Alanlar (Düzenleyebilirsin)
