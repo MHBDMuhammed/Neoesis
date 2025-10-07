@@ -116,7 +116,7 @@ export function Quiz({ lesson }: QuizProps) {
             <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
               <HelpCircle className="size-5" />
             </div>
-            Check Your Understanding
+            Anlayışınızı Kontrol Edin
           </CardTitle>
         </CardHeader>
 
@@ -170,17 +170,17 @@ export function Quiz({ lesson }: QuizProps) {
               <span className="text-muted-foreground">
                 {hasCompletedQuiz ? (
                   <span className="font-medium text-primary">
-                    ✓ Completed
+                    ✓ Tamamlandı
                   </span>
                 ) : hasExhaustedAttempts ? (
                   <span className="font-medium text-destructive">
-                    No attempts remaining
+                    Kalan deneme yok
                   </span>
                 ) : (
                   <>
-                    Attempts remaining:{' '}
+                    Kalan deneme:{' '}
                     <span className="font-semibold text-foreground">
-                      {attemptsRemaining} of {MAX_ATTEMPTS}
+                      {attemptsRemaining} / {MAX_ATTEMPTS}
                     </span>
                   </>
                 )}
@@ -201,10 +201,10 @@ export function Quiz({ lesson }: QuizProps) {
             >
               {isSubmitting && <Loader2 className="size-4 animate-spin" />}
               {hasCompletedQuiz
-                ? 'Already Completed'
+                ? 'Zaten Tamamlandı'
                 : hasExhaustedAttempts
-                  ? 'No Attempts Left'
-                  : 'Submit Answer'}
+                  ? 'Deneme Hakkı Kalmadı'
+                  : 'Cevabı Gönder'}
             </Button>
           </div>
         </CardContent>

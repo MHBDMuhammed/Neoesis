@@ -53,7 +53,7 @@ export function KeyConcept({ term, children, className }: KeyConceptProps) {
 export interface KeyConceptsProps {
   /**
    * Title for the key concepts section
-   * @default 'Key Concepts'
+   * @default 'Anahtar Kavramlar'
    */
   title?: string;
   /**
@@ -85,7 +85,7 @@ export interface KeyConceptsProps {
  * ```
  */
 export function KeyConcepts({
-  title = 'Key Concepts',
+  title = 'Anahtar Kavramlar',
   children,
   className,
 }: KeyConceptsProps) {

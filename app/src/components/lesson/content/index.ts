@@ -51,3 +51,7 @@ export type { FigureProps } from './Figure';
 // ComparisonTable - Side-by-side comparisons
 export { ComparisonTable } from './ComparisonTable';
 export type { ComparisonTableProps, ComparisonColumn } from './ComparisonTable';
+
+// CodePlayground - Interactive code execution
+export { CodePlayground } from './CodePlayground';
+export type { CodePlaygroundProps } from './CodePlayground';

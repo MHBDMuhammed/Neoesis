@@ -73,23 +73,21 @@ export function QuizFeedback({
               </div>
 
               <DialogTitle className="text-center text-2xl">
-                {correct ? 'Correct!' : 'Not Quite'}
+                {correct ? 'Doğru!' : 'Tam Değil'}
               </DialogTitle>
 
               <DialogDescription className="text-center text-base">
                 {correct
-                  ? 'Great job! You got it right.'
+                  ? 'Harika! Doğru cevabı buldunuz.'
                   : canRetry
-                    ? `You have ${attemptsRemaining} ${
-                        attemptsRemaining === 1 ? 'attempt' : 'attempts'
-                      } remaining.`
-                    : 'No attempts remaining for this quiz.'}
+                    ? `${attemptsRemaining} deneme hakkınız kaldı.`
+                    : 'Bu quiz için deneme hakkınız kalmadı.'}
               </DialogDescription>
             </DialogHeader>
 
             <div className="my-6 rounded-lg border bg-muted/50 p-4">
               <h4 className="mb-2 font-semibold text-foreground">
-                Explanation
+                Açıklama
               </h4>
               <p className="text-sm leading-relaxed text-muted-foreground">
                 {explanation}
@@ -98,7 +96,7 @@ export function QuizFeedback({
 
             {!correct && attemptsUsed < 3 && (
               <div className="mb-4 text-center text-sm text-muted-foreground">
-                Attempts used: {attemptsUsed} of 3
+                Kullanılan deneme: {attemptsUsed} / 3
               </div>
             )}
 
@@ -110,22 +108,22 @@ export function QuizFeedback({
                     onClick={onContinue}
                     className="gap-2"
                   >
-                    Continue Anyway
+                    Yine de Devam Et
                   </Button>
                   <Button onClick={onTryAgain} className="gap-2">
                     <RotateCcw className="size-4" />
-                    Try Again
+                    Tekrar Dene
                   </Button>
                 </>
               ) : (
                 <Button onClick={onContinue} className="w-full gap-2">
                   {correct ? (
                     <>
-                      Continue
+                      Devam Et
                       <ArrowRight className="size-4" />
                     </>
                   ) : (
-                    'Continue'
+                    'Devam Et'
                   )}
                 </Button>
               )}

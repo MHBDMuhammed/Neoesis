@@ -151,6 +151,182 @@ export const blurIn = {
   transition: { duration: 0.5 },
 };
 
+/**
+ * Smooth Reveal - Progressive content reveal
+ * Best for: Hero text, headings
+ */
+export const smoothReveal = {
+  initial: { opacity: 0, y: 30, filter: 'blur(4px)' } as Variant,
+  animate: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+  } as Variant,
+  transition: {
+    duration: 0.8,
+    ease: [0.16, 1, 0.3, 1], // Custom easing
+  },
+};
+
+/**
+ * Card Hover - Premium card interaction
+ * Best for: Interactive cards, buttons
+ */
+export const cardHover = {
+  rest: { scale: 1, y: 0 },
+  hover: {
+    scale: 1.02,
+    y: -4,
+    transition: {
+      duration: 0.3,
+      ease: [0.4, 0, 0.2, 1]
+    }
+  },
+  tap: { scale: 0.98 },
+};
+
+/**
+ * Tilt 3D - Subtle 3D tilt effect
+ * Best for: Cards, images on hover
+ */
+export const tilt3D = {
+  rest: {
+    rotateX: 0,
+    rotateY: 0,
+    scale: 1,
+  },
+  hover: {
+    scale: 1.05,
+    transition: { duration: 0.4, ease: 'easeOut' }
+  },
+};
+
+/**
+ * Magnetic Button - Button attracted to cursor
+ * Best for: CTA buttons, interactive elements
+ * Note: Requires custom hook for cursor tracking
+ */
+export const magneticButton = {
+  rest: { x: 0, y: 0, scale: 1 },
+  hover: { scale: 1.05 },
+  tap: { scale: 0.95 },
+  transition: {
+    type: 'spring',
+    stiffness: 400,
+    damping: 25,
+  },
+};
+
+/**
+ * Float Animation - Continuous floating
+ * Best for: Decorative elements, badges
+ */
+export const float = {
+  animate: {
+    y: [0, -10, 0],
+    transition: {
+      duration: 3,
+      repeat: Infinity,
+      ease: 'easeInOut',
+    },
+  },
+};
+
+/**
+ * Pulse Glow - Pulsing glow effect
+ * Best for: Active states, notifications
+ */
+export const pulseGlow = {
+  animate: {
+    boxShadow: [
+      '0 0 0 0 oklch(0.55 0.15 265 / 0.4)',
+      '0 0 0 10px oklch(0.55 0.15 265 / 0)',
+      '0 0 0 0 oklch(0.55 0.15 265 / 0)',
+    ],
+    transition: {
+      duration: 2,
+      repeat: Infinity,
+      ease: 'easeInOut',
+    },
+  },
+};
+
+/**
+ * Shimmer - Shimmer effect for loading states
+ * Best for: Skeleton loaders
+ */
+export const shimmer = {
+  animate: {
+    backgroundPosition: ['200% 0', '-200% 0'],
+    transition: {
+      duration: 2,
+      repeat: Infinity,
+      ease: 'linear',
+    },
+  },
+};
+
+/**
+ * Stagger List - List items with stagger
+ * Best for: Navigation menus, feature lists
+ */
+export const staggerList = {
+  container: {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.1,
+      },
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        staggerChildren: 0.05,
+        staggerDirection: -1,
+      },
+    },
+  },
+  item: {
+    hidden: { opacity: 0, x: -20 },
+    show: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.4,
+        ease: [0.4, 0, 0.2, 1],
+      },
+    },
+    exit: {
+      opacity: 0,
+      x: 20,
+      transition: { duration: 0.2 },
+    },
+  },
+};
+
+/**
+ * Page Transition - Smooth page transitions
+ * Best for: Route changes
+ */
+export const pageTransition = {
+  initial: { opacity: 0, y: 20 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -20,
+    transition: { duration: 0.3 },
+  },
+};
+
 // AI:SAFE-EDIT END
 
 /**
@@ -169,6 +345,15 @@ export const animations = {
   bounceIn,
   rotateIn,
   blurIn,
+  smoothReveal,
+  cardHover,
+  tilt3D,
+  magneticButton,
+  float,
+  pulseGlow,
+  shimmer,
+  staggerList,
+  pageTransition,
 };
 
 export default animations;

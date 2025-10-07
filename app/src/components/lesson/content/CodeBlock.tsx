@@ -100,17 +100,17 @@ export function CodeBlock({
           size="sm"
           onClick={handleCopy}
           className="gap-2"
-          aria-label="Copy code"
+          aria-label="Kodu kopyala"
         >
           {copied ? (
             <>
               <Check className="size-4" />
-              <span className="text-xs">Copied!</span>
+              <span className="text-xs">Kopyalandı!</span>
             </>
           ) : (
             <>
               <Copy className="size-4" />
-              <span className="text-xs">Copy</span>
+              <span className="text-xs">Kopyala</span>
             </>
           )}
         </Button>

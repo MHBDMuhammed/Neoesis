@@ -63,7 +63,7 @@ export function Step({ number, title, children, className }: StepProps) {
 export interface StepGuideProps {
   /**
    * Title for the step guide
-   * @default 'Step-by-Step Guide'
+   * @default 'Adım Adım Kılavuz'
    */
   title?: string;
   /**
@@ -99,7 +99,7 @@ export interface StepGuideProps {
  * ```
  */
 export function StepGuide({
-  title = 'Step-by-Step Guide',
+  title = 'Adım Adım Kılavuz',
   children,
   className,
 }: StepGuideProps) {

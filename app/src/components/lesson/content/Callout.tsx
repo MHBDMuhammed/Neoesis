@@ -107,7 +107,7 @@ export function Callout({
         className
       )}
       role="note"
-      aria-label={`${type} callout`}
+      aria-label={`${type === 'info' ? 'bilgi' : type === 'warning' ? 'uyarı' : type === 'success' ? 'başarılı' : type === 'error' ? 'hata' : 'ipucu'} notu`}
     >
       <div className="flex-shrink-0">
         <Icon
