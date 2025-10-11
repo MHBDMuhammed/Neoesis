@@ -44,14 +44,14 @@ export function ReadingProgress({
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <h3 className="text-sm font-semibold text-foreground">
-              Reading Progress
+              Okuma İlerlemesi
             </h3>
             <span className="text-2xl font-bold text-primary">{progress}%</span>
           </div>
           <Progress
             value={progress}
             className="h-2"
-            aria-label={`${progress}% complete`}
+            aria-label={`%${progress} tamamlandı`}
           />
         </div>
 
@@ -60,13 +60,13 @@ export function ReadingProgress({
             <Clock className="size-4" />
             <span>
               {remainingMinutes > 0
-                ? `${remainingMinutes} min remaining`
-                : 'Complete!'}
+                ? `${remainingMinutes} dk kaldı`
+                : 'Tamamlandı!'}
             </span>
           </div>
           <div className="flex items-center gap-2 text-muted-foreground">
             <BookOpen className="size-4" />
-            <span>{estimatedMinutes} min read</span>
+            <span>{estimatedMinutes} dk okuma</span>
           </div>
         </div>
       </div>
@@ -76,7 +76,7 @@ export function ReadingProgress({
         <div className="rounded-lg border bg-muted/50 p-4 text-sm">
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <span className="font-medium text-foreground">Status</span>
+              <span className="font-medium text-foreground">Durum</span>
               <span
                 className={`rounded-full px-2 py-0.5 text-xs font-semibold ${
                   lessonProgress.status === 'completed'
@@ -87,16 +87,16 @@ export function ReadingProgress({
                 }`}
               >
                 {lessonProgress.status === 'completed'
-                  ? 'Completed'
+                  ? 'Tamamlandı'
                   : lessonProgress.status === 'in_progress'
-                    ? 'In Progress'
-                    : 'Not Started'}
+                    ? 'Devam Ediyor'
+                    : 'Başlanmadı'}
               </span>
             </div>
             {lessonProgress.lastVisited && (
               <p className="text-xs text-muted-foreground">
-                Last visited:{' '}
-                {new Date(lessonProgress.lastVisited).toLocaleDateString()}
+                Son ziyaret:{' '}
+                {new Date(lessonProgress.lastVisited).toLocaleDateString('tr-TR')}
               </p>
             )}
           </div>

@@ -35,7 +35,7 @@ export function ObjectivesPanel({ objectives }: ObjectivesPanelProps) {
           <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary">
             <Target className="size-4" />
           </div>
-          What You'll Learn
+          Ne Öğreneceksiniz
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -45,7 +45,7 @@ export function ObjectivesPanel({ objectives }: ObjectivesPanelProps) {
           animate="show"
           className="space-y-3"
           role="list"
-          aria-label="Learning objectives"
+          aria-label="Öğrenme hedefleri"
         >
           {objectives.map((objective, index) => (
             <motion.li

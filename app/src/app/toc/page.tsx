@@ -3,10 +3,12 @@
 import * as React from 'react';
 import { SearchBar } from '@/components/toc/SearchBar';
 import { FilterChips } from '@/components/toc/FilterChips';
-import { ProgressBar } from '@/components/toc/ProgressBar';
-import { SectionCard } from '@/components/toc/SectionCard';
+import { TOCHero } from '@/components/toc/TOCHero';
+import { ViewModeToggle, type ViewMode } from '@/components/toc/ViewModeToggle';
+import { EnhancedSectionCard } from '@/components/toc/EnhancedSectionCard';
 import { curriculum } from '@/lessons';
 import { useLessonSearch } from '@/hooks/use-lesson-search';
+import { useProgressStore } from '@/lib/progress-store';
 import { BookOpen } from 'lucide-react';
 import type { Section, SectionWithLessons } from '@/types/lesson';
 
@@ -15,6 +17,7 @@ export default function TableOfContentsPage() {
   const [selectedSections, setSelectedSections] = React.useState<Set<string>>(
     new Set()
   );
+  const [viewMode, setViewMode] = React.useState<ViewMode>('list');
 
   // Apply search
   const searchResults = useLessonSearch(curriculum.lessons, searchQuery);
@@ -84,37 +87,41 @@ export default function TableOfContentsPage() {
   const showEmptyState =
     filteredSections.length === 0 && (searchQuery || selectedSections.size > 0);
 
+  // Calculate stats
+  const progress = useProgressStore();
+  const totalLessons = curriculum.lessons.length;
+  const totalMinutes = curriculum.lessons.reduce(
+    (sum, lesson) => sum + lesson.meta.estimatedMinutes,
+    0
+  );
+  const totalHours = Math.ceil(totalMinutes / 60);
+  const completedLessons = curriculum.lessons.filter(
+    (lesson) => progress.getLesson(lesson.meta.slug)?.status === 'completed'
+  ).length;
+
   return (
     <main id="main-content" className="min-h-screen bg-background">
       <div className="mx-auto max-w-7xl space-y-8 px-4 py-8 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="space-y-4">
-          <div className="flex items-center gap-3">
-            <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
-              <BookOpen className="size-6" />
+        {/* Hero Section */}
+        <TOCHero
+          totalLessons={totalLessons}
+          totalHours={totalHours}
+          completedLessons={completedLessons}
+        />
+
+        {/* Search, Filters, and View Mode */}
+        <div className="space-y-6 rounded-2xl border bg-card p-6 shadow-lg">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+            <div className="flex-1">
+              <SearchBar
+                value={searchQuery}
+                onChange={setSearchQuery}
+                resultCount={filteredLessons.length}
+                totalCount={curriculum.lessons.length}
+              />
             </div>
-            <div>
-              <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                İçindekiler
-              </h1>
-              <p className="text-muted-foreground">
-                Tüm müfredatımızı keşfedin
-              </p>
-            </div>
+            <ViewModeToggle mode={viewMode} onChange={setViewMode} />
           </div>
-
-          {/* Progress Bar */}
-          <ProgressBar />
-        </div>
-
-        {/* Search and Filters */}
-        <div className="space-y-6 rounded-lg border bg-card p-6 shadow-sm">
-          <SearchBar
-            value={searchQuery}
-            onChange={setSearchQuery}
-            resultCount={filteredLessons.length}
-            totalCount={curriculum.lessons.length}
-          />
 
           <FilterChips
             sections={sections}
@@ -125,21 +132,21 @@ export default function TableOfContentsPage() {
         </div>
 
         {/* Sections */}
-        <div className="space-y-6">
+        <div className="space-y-8">
           {showEmptyState ? (
             <div
               data-testid="empty-state"
-              className="flex flex-col items-center justify-center rounded-lg border border-dashed bg-muted/50 py-16 text-center"
+              className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed bg-muted/30 py-20 text-center"
             >
-              <div className="mx-auto max-w-md space-y-4">
-                <div className="mx-auto flex size-16 items-center justify-center rounded-full bg-muted">
-                  <BookOpen className="size-8 text-muted-foreground" />
+              <div className="mx-auto max-w-md space-y-6">
+                <div className="mx-auto flex size-20 items-center justify-center rounded-2xl bg-muted">
+                  <BookOpen className="size-10 text-muted-foreground" />
                 </div>
-                <div className="space-y-2">
-                  <h3 className="text-lg font-semibold text-foreground">
+                <div className="space-y-3">
+                  <h3 className="text-xl font-bold text-foreground">
                     Filtrelerinizle eşleşen ders bulunamadı
                   </h3>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-muted-foreground">
                     Arama sorgunuzu veya seçili bölümleri ayarlamayı deneyin
                   </p>
                 </div>
@@ -148,15 +155,19 @@ export default function TableOfContentsPage() {
                     setSearchQuery('');
                     handleClearFilters();
                   }}
-                  className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground shadow-lg transition-all hover:bg-primary/90 hover:shadow-xl"
                 >
-                  Filtreleri temizle
+                  Filtreleri Temizle
                 </button>
               </div>
             </div>
           ) : (
             filteredSections.map((section) => (
-              <SectionCard key={section.section.id} section={section} />
+              <EnhancedSectionCard
+                key={section.section.id}
+                section={section}
+                viewMode={viewMode}
+              />
             ))
           )}
         </div>

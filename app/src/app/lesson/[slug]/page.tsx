@@ -21,7 +21,7 @@ export async function generateMetadata({
 
   if (!lesson) {
     return {
-      title: 'Lesson Not Found',
+      title: 'Ders Bulunamadı',
     };
   }
 
@@ -31,8 +31,9 @@ export async function generateMetadata({
     keywords: [
       ...lesson.meta.objectives,
       lesson.meta.section,
-      'tutorial',
-      'lesson',
+      'eğitim',
+      'ders',
+      'öğrenme',
     ],
   };
 }
