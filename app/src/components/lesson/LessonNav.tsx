@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 import { useLessonProgress } from '@/hooks/use-lesson-progress';
 import type { LessonMeta } from '@/types/lesson';
 
-interface EnhancedLessonNavProps {
+interface LessonNavProps {
   current: {
     meta: LessonMeta;
     prev: { meta: LessonMeta } | null;
@@ -19,17 +19,17 @@ interface EnhancedLessonNavProps {
 }
 
 /**
- * EnhancedLessonNav - Gelişmiş ders navigasyonu
+ * LessonNav - Advanced lesson navigation
  *
- * Özellikleri:
- * - Kart tabanlı prev/next görünümü (sadece buton değil)
- * - Başlık, açıklama, tahmini süre, ilerleme çubuğu gösterir
- * - Hover animasyonu (lift + shadow)
- * - Klavye kısayolları: ← prev, → next
- * - Mobil swipe gesture desteği (opsiyonel)
- * - Completion durumu göstergesi
+ * Features:
+ * - Card-based prev/next view (not just buttons)
+ * - Shows title, description, estimated time, progress bar
+ * - Hover animation (lift + shadow)
+ * - Keyboard shortcuts: ← prev, → next
+ * - Mobile swipe gesture support (optional)
+ * - Completion status indicator
  */
-export function EnhancedLessonNav({ current, className }: EnhancedLessonNavProps) {
+export function LessonNav({ current, className }: LessonNavProps) {
   const { prev, next } = current;
   const prevProgress = useLessonProgress(prev?.meta.slug);
   const nextProgress = useLessonProgress(next?.meta.slug);

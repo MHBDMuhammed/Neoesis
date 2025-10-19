@@ -1,109 +1,201 @@
 'use client';
 
 import * as React from 'react';
-import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Clock, CheckCircle2, PlayCircle, HelpCircle } from 'lucide-react';
-import { useLessonStatus } from '@/hooks/use-progress';
+import { Progress } from '@/components/ui/progress';
+import { Clock, CheckCircle2, Circle, PlayCircle } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import type { LessonWithMeta } from '@/types/lesson';
+import { useProgressStore } from '@/lib/progress-store';
 
 interface LessonCardProps {
   lesson: LessonWithMeta;
+  viewMode?: 'grid' | 'list';
 }
 
-const statusConfig = {
-  not_started: {
-    label: 'Başlanmadı',
-    variant: 'outline' as const,
-    icon: null,
-  },
-  in_progress: {
-    label: 'Devam Ediyor',
-    variant: 'secondary' as const,
-    icon: PlayCircle,
-  },
-  completed: {
-    label: 'Tamamlandı',
-    variant: 'default' as const,
-    icon: CheckCircle2,
-  },
-};
+/**
+ * LessonCard - Modern lesson card with progress tracking
+ *
+ * Features:
+ * - Progress indicator
+ * - Completion badge
+ * - Quiz indicator
+ * - Hover animations
+ * - Two view modes (grid/list)
+ * - Status icons
+ */
+export function LessonCard({
+  lesson,
+  viewMode = 'list',
+}: LessonCardProps) {
+  const router = useRouter();
+  const progressData = useProgressStore((state) =>
+    state.getLesson(lesson.meta.slug)
+  );
 
-export function LessonCard({ lesson }: LessonCardProps) {
-  const status = useLessonStatus(lesson.meta.slug);
-  const config = statusConfig[status];
-  const StatusIcon = config.icon;
+  const isCompleted = progressData?.status === 'completed';
+  const quizScores = progressData?.quizScores;
+  const hasQuiz = lesson.meta.quiz !== undefined;
 
-  return (
-    <Link
-      href={`/lesson/${lesson.meta.slug}`}
-      data-testid="lesson-card"
-      className="group relative block rounded-lg border bg-card p-4 transition-all hover:border-primary/50 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-    >
-      {/* Status indicator bar */}
-      <div
-        className={`absolute inset-x-0 top-0 h-1 rounded-t-lg transition-all ${
-          status === 'completed'
-            ? 'bg-primary'
-            : status === 'in_progress'
-              ? 'bg-primary/50'
-              : 'bg-transparent'
-        }`}
-      />
+  // Calculate average quiz score if available
+  const quizScore = quizScores
+    ? Math.round(
+        (Object.values(quizScores).filter((s) => s.correct).length /
+          Object.keys(quizScores).length) *
+          100
+      )
+    : undefined;
 
-      <div className="flex items-start justify-between gap-3">
-        <div className="flex-1 space-y-2">
-          <div className="flex items-start gap-2">
-            <h3 className="font-semibold text-foreground transition-colors group-hover:text-primary">
-              {lesson.meta.title}
-            </h3>
-            {lesson.meta.quiz && (
-              <HelpCircle
-                className="size-4 shrink-0 text-primary"
-                aria-label="Includes quiz"
-                data-testid="quiz-icon"
-              />
-            )}
+  const handleClick = () => {
+    router.push(`/lesson/${lesson.meta.slug}`);
+  };
+
+  const StatusIcon = isCompleted ? CheckCircle2 : Circle;
+
+  if (viewMode === 'grid') {
+    return (
+      <motion.div
+        whileHover={{ y: -4 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+      >
+        <div
+          onClick={handleClick}
+          className="group relative h-full cursor-pointer rounded-xl border bg-background p-6 transition-all hover:border-primary/50 hover:shadow-lg"
+        >
+          {/* Status Badge */}
+          <div className="absolute top-4 end-4">
+            <StatusIcon
+              className={`size-5 ${
+                isCompleted
+                  ? 'text-green-500'
+                  : 'text-muted-foreground/30'
+              }`}
+            />
           </div>
 
-          <p className="line-clamp-2 text-sm text-muted-foreground">
+          <div className="space-y-4">
+            {/* Title */}
+            <h3 className="text-lg font-semibold line-clamp-2 pe-8 group-hover:text-primary transition-colors">
+              {lesson.meta.title}
+            </h3>
+
+            {/* Description */}
+            <p className="text-sm text-muted-foreground line-clamp-2">
+              {lesson.meta.description}
+            </p>
+
+            {/* Meta */}
+            <div className="flex items-center gap-4 text-sm text-muted-foreground">
+              <div className="flex items-center gap-1.5">
+                <Clock className="size-4" />
+                <span>{lesson.meta.estimatedMinutes} dk</span>
+              </div>
+              {hasQuiz && (
+                <Badge variant="secondary" className="text-xs">
+                  Quiz
+                </Badge>
+              )}
+            </div>
+
+            {/* Progress */}
+            {isCompleted && (
+              <div className="space-y-2">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-green-600 font-medium">
+                    Tamamlandı
+                  </span>
+                  {quizScore !== undefined && (
+                    <span className="text-muted-foreground">
+                      Quiz: %{quizScore}
+                    </span>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* CTA */}
+            <Button
+              variant="ghost"
+              size="sm"
+              className="w-full group-hover:bg-primary/10"
+            >
+              <PlayCircle className="me-2 size-4" />
+              {isCompleted ? 'Tekrar İzle' : 'Başla'}
+            </Button>
+          </div>
+        </div>
+      </motion.div>
+    );
+  }
+
+  // List view
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      <div
+        onClick={handleClick}
+        className="group flex items-center gap-4 rounded-lg border bg-background p-4 cursor-pointer transition-all hover:border-primary/50 hover:shadow-md"
+      >
+        {/* Status Icon */}
+        <div className="shrink-0">
+          <StatusIcon
+            className={`size-6 ${
+              isCompleted
+                ? 'text-green-500'
+                : 'text-muted-foreground/30'
+            }`}
+          />
+        </div>
+
+        {/* Content */}
+        <div className="min-w-0 flex-1 space-y-1">
+          <div className="flex items-start justify-between gap-4">
+            <h3 className="font-semibold group-hover:text-primary transition-colors">
+              {lesson.meta.title}
+            </h3>
+            <div className="flex items-center gap-2 shrink-0">
+              <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                <Clock className="size-4" />
+                <span>{lesson.meta.estimatedMinutes} dk</span>
+              </div>
+              {hasQuiz && (
+                <Badge variant="secondary" className="text-xs">
+                  Quiz
+                </Badge>
+              )}
+            </div>
+          </div>
+
+          <p className="text-sm text-muted-foreground line-clamp-1">
             {lesson.meta.description}
           </p>
 
-          <div className="flex flex-wrap items-center gap-2">
-            <Badge variant={config.variant} className="gap-1 text-xs">
-              {StatusIcon && <StatusIcon className="size-3" />}
-              {config.label}
-            </Badge>
-
-            <div className="flex items-center gap-1 text-xs text-muted-foreground">
-              <Clock className="size-3" />
-              <span>{lesson.meta.estimatedMinutes} min</span>
-            </div>
-
-            {lesson.meta.objectives.length > 0 && (
-              <span className="text-xs text-muted-foreground">
-                {lesson.meta.objectives.length} objectives
+          {/* Progress Bar */}
+          {isCompleted && (
+            <div className="flex items-center gap-3">
+              <Progress value={100} className="h-1.5 flex-1" />
+              <span className="text-xs text-green-600 font-medium">
+                Tamamlandı
               </span>
-            )}
-          </div>
+              {quizScore !== undefined && (
+                <span className="text-xs text-muted-foreground">
+                  Quiz: %{quizScore}
+                </span>
+              )}
+            </div>
+          )}
         </div>
 
-        {/* Visual indicator on hover */}
-        <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-muted/50 opacity-0 transition-opacity group-hover:opacity-100">
-          <svg
-            className="size-4 text-primary"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path d="M9 5l7 7-7 7" />
-          </svg>
-        </div>
+        {/* Action */}
+        <Button variant="ghost" size="sm" className="shrink-0">
+          <PlayCircle className="size-4" />
+        </Button>
       </div>
-    </Link>
+    </motion.div>
   );
 }

@@ -73,6 +73,43 @@
   --spacing-md: 1rem;
   --spacing-lg: 1.5rem;
   --spacing-xl: 2rem;
+
+  /* Cosmic Gradients */
+  --gradient-cosmic-primary: linear-gradient(135deg,
+    oklch(0.5 0.2 260) 0%,
+    oklch(0.7 0.15 280) 100%);
+
+  --gradient-cosmic-radial: radial-gradient(
+    circle at 50% 50%,
+    oklch(0.6 0.2 240 / 0.3) 0%,
+    oklch(0.5 0.18 260 / 0.15) 50%,
+    transparent 100%
+  );
+
+  --gradient-cosmic-success: linear-gradient(135deg,
+    oklch(0.65 0.18 145) 0%,
+    oklch(0.75 0.15 160) 100%);
+
+  --gradient-cosmic-error: linear-gradient(135deg,
+    oklch(0.6 0.2 20) 0%,
+    oklch(0.7 0.18 30) 100%);
+
+  --gradient-cosmic-mesh: radial-gradient(at 27% 37%, oklch(0.55 0.15 265 / 0.12) 0px, transparent 50%),
+                          radial-gradient(at 97% 21%, oklch(0.70 0.16 15 / 0.1) 0px, transparent 50%),
+                          radial-gradient(at 52% 99%, oklch(0.60 0.18 230 / 0.09) 0px, transparent 50%);
+
+  /* Neon Glow Shadows */
+  --glow-cosmic-primary: 0 0 20px oklch(0.55 0.15 265 / 0.5),
+                         0 0 40px oklch(0.55 0.15 265 / 0.3);
+
+  --glow-cosmic-success: 0 0 20px oklch(0.65 0.18 145 / 0.5);
+  --glow-cosmic-error: 0 0 20px oklch(0.6 0.2 20 / 0.5);
+  --glow-cosmic-accent: 0 0 20px oklch(0.7 0.16 15 / 0.5);
+
+  /* Cosmic Typography */
+  --font-cosmic-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-cosmic-heading-weight: 700;
+  --font-cosmic-body-weight: 400;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
@@ -118,6 +155,18 @@
   --brand: oklch(0.65 0.15 265);
   --fg-default: oklch(0.9 0 0);
   --bg-default: oklch(0.129 0.042 264.695);
+
+  /* Cosmic Gradients (Dark - stronger glow) */
+  --gradient-cosmic-primary: linear-gradient(135deg,
+    oklch(0.6 0.22 260) 0%,
+    oklch(0.75 0.18 280) 100%);
+
+  --glow-cosmic-primary: 0 0 24px oklch(0.65 0.15 265 / 0.6),
+                         0 0 48px oklch(0.65 0.15 265 / 0.4),
+                         0 0 80px oklch(0.65 0.15 265 / 0.2);
+
+  --glow-cosmic-success: 0 0 24px oklch(0.75 0.18 145 / 0.6);
+  --glow-cosmic-error: 0 0 24px oklch(0.7 0.2 20 / 0.6);
   --card: oklch(0.208 0.042 265.755);
   --card-foreground: oklch(0.984 0.003 247.858);
   --popover: oklch(0.208 0.042 265.755);
@@ -161,5 +210,39 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Cosmic Utility Classes */
+@layer utilities {
+  .cosmic-gradient {
+    background: var(--gradient-cosmic-primary);
+  }
+
+  .cosmic-gradient-text {
+    background: var(--gradient-cosmic-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .cosmic-glow {
+    box-shadow: var(--glow-cosmic-primary);
+  }
+
+  .cosmic-glow-hover {
+    transition: box-shadow 0.2s ease-out;
+  }
+
+  .cosmic-glow-hover:hover {
+    box-shadow: var(--glow-cosmic-primary);
+  }
+
+  .cosmic-border {
+    border: 1px solid oklch(0.55 0.15 265 / 0.3);
+  }
+
+  .cosmic-mesh-bg {
+    background: var(--gradient-cosmic-mesh);
   }
 }

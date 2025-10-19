@@ -30,7 +30,7 @@ const container = {
 // End AI:PROTECTED
 
 /**
- * NewHero - Premium hero section with 3D background and typewriter effect
+ * HeroSection - Premium hero section with 3D background and typewriter effect
  *
  * Features:
  * - 3D animated background (Three.js)
@@ -46,7 +46,7 @@ const container = {
  * - Screen reader friendly
  * - WCAG 2.1 AA compliant
  */
-export function NewHero() {
+export function HeroSection() {
   const router = useRouter();
 
   const handleStartLearning = React.useCallback(() => {

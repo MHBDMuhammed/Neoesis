@@ -16,7 +16,7 @@ import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { cn } from '@/lib/utils';
 
-interface EnhancedQuizFeedbackProps {
+interface QuizFeedbackProps {
   isOpen: boolean;
   correct: boolean;
   explanation: string;
@@ -42,7 +42,7 @@ interface EnhancedQuizFeedbackProps {
  * - Skor gösterimi
  * - Motivasyonel mesajlar
  */
-export function EnhancedQuizFeedback({
+export function QuizFeedback({
   isOpen,
   correct,
   explanation,
@@ -54,7 +54,7 @@ export function EnhancedQuizFeedback({
   onTryAgain,
   onContinue,
   onShowHint,
-}: EnhancedQuizFeedbackProps) {
+}: QuizFeedbackProps) {
   const [showConfetti, setShowConfetti] = React.useState(false);
 
   // Trigger confetti on correct answer
@@ -193,7 +193,7 @@ export function EnhancedQuizFeedback({
                         İlgili Konular
                       </h4>
                       <div className="space-y-2">
-                        {relatedSections.map((section, index) => (
+                        {relatedSections.map((section: string, index: number) => (
                           <button
                             key={index}
                             className="flex w-full items-center justify-between rounded-lg border bg-card p-3 text-start transition-colors hover:border-primary hover:bg-primary/5"

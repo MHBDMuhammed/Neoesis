@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { NewHero } from '@/components/home/NewHero';
+import { HeroSection } from '@/components/home/HeroSection';
 import { FeaturedLessons } from '@/components/home/FeaturedLessons';
 import { HowItWorks } from '@/components/home/HowItWorks';
 import { LearningFeatures } from '@/components/home/LearningFeatures';
@@ -17,7 +17,7 @@ export default function HomePage() {
   return (
     <main id="main-content" className="min-h-screen bg-background">
       {/* Hero Section with 3D Background & Typewriter Effect */}
-      <NewHero />
+      <HeroSection />
 
       {/* Featured Lessons Showcase */}
       <FeaturedLessons />

@@ -8,7 +8,7 @@ import { FillBlanksQuiz } from './FillBlanksQuiz';
 import { MatchingQuiz } from './MatchingQuiz';
 import { OrderingQuiz } from './OrderingQuiz';
 import { CodeQuizComponent } from './CodeQuizComponent';
-import { EnhancedQuizFeedback } from './EnhancedQuizFeedback';
+import { QuizFeedback } from './QuizFeedback';
 import { useProgressStore } from '@/lib/progress-store';
 import { useLessonProgress } from '@/hooks/use-progress';
 import type { Quiz } from '@/types/quiz';
@@ -276,7 +276,7 @@ export function UnifiedQuiz({ quiz, lessonSlug }: UnifiedQuizProps) {
 
       {/* Enhanced Feedback */}
       {showFeedback && lastResult && (
-        <EnhancedQuizFeedback
+        <QuizFeedback
           isOpen={showFeedback}
           correct={lastResult.correct}
           explanation={quiz.explanation}

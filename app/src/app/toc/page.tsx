@@ -5,7 +5,7 @@ import { SearchBar } from '@/components/toc/SearchBar';
 import { FilterChips } from '@/components/toc/FilterChips';
 import { TOCHero } from '@/components/toc/TOCHero';
 import { ViewModeToggle, type ViewMode } from '@/components/toc/ViewModeToggle';
-import { EnhancedSectionCard } from '@/components/toc/EnhancedSectionCard';
+import { SectionCard } from '@/components/toc/SectionCard';
 import { curriculum } from '@/lessons';
 import { useLessonSearch } from '@/hooks/use-lesson-search';
 import { useProgressStore } from '@/lib/progress-store';
@@ -163,7 +163,7 @@ export default function TableOfContentsPage() {
             </div>
           ) : (
             filteredSections.map((section) => (
-              <EnhancedSectionCard
+              <SectionCard
                 key={section.section.id}
                 section={section}
                 viewMode={viewMode}

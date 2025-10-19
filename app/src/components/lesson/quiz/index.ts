@@ -21,4 +21,4 @@ export { OrderingQuiz } from './OrderingQuiz';
 export { CodeQuizComponent as CodeQuiz } from './CodeQuizComponent';
 
 // Enhanced feedback
-export { EnhancedQuizFeedback } from './EnhancedQuizFeedback';
+export { QuizFeedback } from './QuizFeedback';

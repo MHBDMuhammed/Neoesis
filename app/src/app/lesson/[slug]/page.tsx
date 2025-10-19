@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { curriculum } from '@/lessons';
-import { EnhancedLessonLayout } from '@/components/lesson/EnhancedLessonLayout';
+import { LessonLayout } from '@/components/lesson/LessonLayout';
 
 interface LessonPageProps {
   params: Promise<{ slug: string }>;
@@ -56,8 +56,8 @@ export default async function LessonPage({ params }: LessonPageProps) {
   };
 
   return (
-    <EnhancedLessonLayout lesson={lesson}>
+    <LessonLayout lesson={lesson}>
       <LessonContent />
-    </EnhancedLessonLayout>
+    </LessonLayout>
   );
 }
