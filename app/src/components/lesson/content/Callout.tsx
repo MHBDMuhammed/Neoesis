@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import { m as motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import {
   Info,
@@ -21,41 +20,41 @@ const calloutConfig = {
     icon: Info,
     // Cosmic blue gradient border + background
     className:
-      'border-[oklch(0.6_0.18_230_/_0.5)] bg-gradient-to-br from-[oklch(0.6_0.18_230_/_0.08)] to-[oklch(0.7_0.15_240_/_0.05)] text-[oklch(0.3_0.1_230)] dark:text-[oklch(0.85_0.12_230)]',
-    iconClassName: 'text-[oklch(0.6_0.18_230)]',
-    glowClass: 'hover:shadow-[0_0_20px_oklch(0.6_0.18_230_/_0.3)]',
+      'border-blue-500/30 bg-gradient-to-br from-blue-500/10 to-blue-600/5 text-blue-950 dark:text-blue-200 dark:border-blue-400/40 dark:from-blue-400/10',
+    iconClassName: 'text-blue-600 dark:text-blue-400',
+    glowClass: 'hover:shadow-blue-500/20',
   },
   warning: {
     icon: AlertTriangle,
     // Cosmic yellow gradient border + background
     className:
-      'border-[oklch(0.75_0.15_85_/_0.5)] bg-gradient-to-br from-[oklch(0.75_0.15_85_/_0.08)] to-[oklch(0.8_0.12_90_/_0.05)] text-[oklch(0.4_0.1_85)] dark:text-[oklch(0.85_0.12_85)]',
-    iconClassName: 'text-[oklch(0.75_0.15_85)]',
-    glowClass: 'hover:shadow-[0_0_20px_oklch(0.75_0.15_85_/_0.3)]',
+      'border-yellow-500/30 bg-gradient-to-br from-yellow-500/10 to-yellow-600/5 text-yellow-950 dark:text-yellow-200 dark:border-yellow-400/40 dark:from-yellow-400/10',
+    iconClassName: 'text-yellow-600 dark:text-yellow-400',
+    glowClass: 'hover:shadow-yellow-500/20',
   },
   success: {
     icon: CheckCircle2,
     // Cosmic green gradient border + background
     className:
-      'border-[oklch(0.65_0.18_145_/_0.5)] bg-gradient-to-br from-[oklch(0.65_0.18_145_/_0.08)] to-[oklch(0.7_0.15_155_/_0.05)] text-[oklch(0.3_0.1_145)] dark:text-[oklch(0.85_0.12_145)]',
-    iconClassName: 'text-[oklch(0.65_0.18_145)]',
-    glowClass: 'hover:shadow-[0_0_20px_oklch(0.65_0.18_145_/_0.3)]',
+      'border-green-500/30 bg-gradient-to-br from-green-500/10 to-green-600/5 text-green-950 dark:text-green-200 dark:border-green-400/40 dark:from-green-400/10',
+    iconClassName: 'text-green-600 dark:text-green-400',
+    glowClass: 'hover:shadow-green-500/20',
   },
   error: {
     icon: XCircle,
     // Cosmic red gradient border + background
     className:
-      'border-[oklch(0.6_0.2_20_/_0.5)] bg-gradient-to-br from-[oklch(0.6_0.2_20_/_0.08)] to-[oklch(0.65_0.18_30_/_0.05)] text-[oklch(0.3_0.12_20)] dark:text-[oklch(0.85_0.15_20)]',
-    iconClassName: 'text-[oklch(0.6_0.2_20)]',
-    glowClass: 'hover:shadow-[0_0_20px_oklch(0.6_0.2_20_/_0.3)]',
+      'border-red-500/30 bg-gradient-to-br from-red-500/10 to-red-600/5 text-red-950 dark:text-red-200 dark:border-red-400/40 dark:from-red-400/10',
+    iconClassName: 'text-red-600 dark:text-red-400',
+    glowClass: 'hover:shadow-red-500/20',
   },
   tip: {
     icon: Lightbulb,
     // Cosmic purple gradient border + background
     className:
-      'border-[oklch(0.65_0.18_280_/_0.5)] bg-gradient-to-br from-[oklch(0.65_0.18_280_/_0.08)] to-[oklch(0.7_0.15_290_/_0.05)] text-[oklch(0.3_0.1_280)] dark:text-[oklch(0.85_0.12_280)]',
-    iconClassName: 'text-[oklch(0.65_0.18_280)]',
-    glowClass: 'hover:shadow-[0_0_20px_oklch(0.65_0.18_280_/_0.3)]',
+      'border-purple-500/30 bg-gradient-to-br from-purple-500/10 to-purple-600/5 text-purple-950 dark:text-purple-200 dark:border-purple-400/40 dark:from-purple-400/10',
+    iconClassName: 'text-purple-600 dark:text-purple-400',
+    glowClass: 'hover:shadow-purple-500/20',
   },
 } as const;
 
@@ -161,11 +160,7 @@ export const Callout = React.memo<CalloutProps>(function Callout({
   );
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.3, ease: 'easeOut' }}
-      whileHover={{ scale: 1.02 }}
+    <div
       className={cn(
         // Base styles
         'not-prose my-6 rounded-lg border-2 p-4',
@@ -198,7 +193,7 @@ export const Callout = React.memo<CalloutProps>(function Callout({
         )}
         <div className="text-sm leading-relaxed">{children}</div>
       </div>
-    </motion.div>
+    </div>
   );
 });
 

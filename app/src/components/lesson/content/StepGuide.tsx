@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import { m as motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { ListOrdered } from 'lucide-react';
 
@@ -63,11 +62,7 @@ export const Step = React.memo<StepProps>(function Step({
   className,
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.3, delay: number * 0.1, ease: 'easeOut' }}
-      whileHover={{ scale: 1.02, x: 4 }}
+    <div
       className={cn('flex gap-4', className)}
       role="listitem"
       aria-label={`Adım ${number}: ${title}`}
@@ -79,7 +74,7 @@ export const Step = React.memo<StepProps>(function Step({
             'flex size-10 items-center justify-center rounded-full',
             'text-lg font-bold text-white shadow-md',
             // Cosmic gradient background
-            'bg-gradient-to-br from-[oklch(0.55_0.15_265)] to-[oklch(0.65_0.18_280)]'
+            'bg-gradient-to-br from-primary/10 to-primary/5'
           )}
         >
           {number}
@@ -93,7 +88,7 @@ export const Step = React.memo<StepProps>(function Step({
           {children}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 });
 
@@ -165,10 +160,7 @@ export const StepGuide = React.memo<StepGuideProps>(function StepGuide({
   className,
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, ease: 'easeOut' }}
+    <div
       className={cn('not-prose my-8', className)}
     >
       {/* Header */}
@@ -177,11 +169,11 @@ export const StepGuide = React.memo<StepGuideProps>(function StepGuide({
           className={cn(
             'flex size-8 items-center justify-center rounded-lg',
             // Cosmic gradient background
-            'bg-gradient-to-br from-[oklch(0.55_0.15_265_/_0.15)] to-[oklch(0.65_0.18_280_/_0.1)]'
+            'bg-gradient-to-br from-primary/10 to-primary/5'
           )}
         >
           <ListOrdered
-            className="size-5 text-[oklch(0.55_0.15_265)]"
+            className="size-5 text-primary"
             aria-hidden="true"
           />
         </div>
@@ -193,15 +185,15 @@ export const StepGuide = React.memo<StepGuideProps>(function StepGuide({
         className={cn(
           'relative space-y-0 ps-6',
           // Cosmic neon border with glow
-          'border-s-2 border-[oklch(0.55_0.15_265)]',
-          'shadow-[-2px_0_10px_oklch(0.55_0.15_265_/_0.3)]'
+          'border-s-2 border-primary/30',
+          'shadow-lg shadow-primary/20'
         )}
         role="list"
         aria-label={title}
       >
         {children}
       </div>
-    </motion.div>
+    </div>
   );
 });
 

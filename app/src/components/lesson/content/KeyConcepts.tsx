@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import { m as motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { BookOpen } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -60,18 +59,14 @@ export const KeyConcept = React.memo<KeyConceptProps>(function KeyConcept({
   className,
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.3, ease: 'easeOut' }}
-      whileHover={{ scale: 1.05, y: -4 }}
+    <div
     >
       <Card
         className={cn(
           'border-primary/20 bg-muted/30',
           'transition-all duration-200',
           // Cosmic neon border on hover
-          'hover:border-[oklch(0.55_0.15_265)] hover:shadow-[0_0_20px_oklch(0.55_0.15_265_/_0.4)]',
+          'hover:border-primary/30 hover:shadow-lg hover:shadow-primary/20',
           className
         )}
       >
@@ -80,7 +75,7 @@ export const KeyConcept = React.memo<KeyConceptProps>(function KeyConcept({
             className={cn(
               'mb-2 text-base font-semibold',
               // Cosmic gradient text
-              'bg-gradient-to-r from-[oklch(0.55_0.15_265)] to-[oklch(0.7_0.16_15)]',
+              'bg-gradient-to-r from-primary to-primary/80',
               'bg-clip-text text-transparent'
             )}
           >
@@ -91,7 +86,7 @@ export const KeyConcept = React.memo<KeyConceptProps>(function KeyConcept({
           </dd>
         </CardContent>
       </Card>
-    </motion.div>
+    </div>
   );
 });
 
@@ -161,10 +156,7 @@ export const KeyConcepts = React.memo<KeyConceptsProps>(function KeyConcepts({
   className,
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, ease: 'easeOut' }}
+    <div
       className={cn('not-prose my-8', className)}
     >
       {/* Header */}
@@ -173,11 +165,11 @@ export const KeyConcepts = React.memo<KeyConceptsProps>(function KeyConcepts({
           className={cn(
             'flex size-8 items-center justify-center rounded-lg',
             // Cosmic gradient background
-            'bg-gradient-to-br from-[oklch(0.55_0.15_265_/_0.15)] to-[oklch(0.65_0.18_280_/_0.1)]'
+            'bg-gradient-to-br from-primary/10 to-primary/5'
           )}
         >
           <BookOpen
-            className="size-5 text-[oklch(0.55_0.15_265)]"
+            className="size-5 text-primary"
             aria-hidden="true"
           />
         </div>
@@ -188,7 +180,7 @@ export const KeyConcepts = React.memo<KeyConceptsProps>(function KeyConcepts({
       <dl className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {children}
       </dl>
-    </motion.div>
+    </div>
   );
 });
 

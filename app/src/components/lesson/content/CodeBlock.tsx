@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { Highlight, themes, type Language } from 'prism-react-renderer';
-import { m as motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { Check, Copy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -124,14 +123,11 @@ export const CodeBlock = React.memo<CodeBlockProps>(function CodeBlock({
   );
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, ease: 'easeOut' }}
+    <div
       className={cn(
         'not-prose my-6 overflow-hidden rounded-lg',
         // Cosmic border
-        'border-2 border-[oklch(0.55_0.15_265_/_0.3)]',
+        'border-2 border-primary/30',
         className
       )}
     >
@@ -140,8 +136,8 @@ export const CodeBlock = React.memo<CodeBlockProps>(function CodeBlock({
         className={cn(
           'flex items-center justify-between border-b px-4 py-2',
           // Cosmic gradient background
-          'bg-gradient-to-r from-[oklch(0.5_0.2_260)] to-[oklch(0.6_0.18_270)]',
-          'border-[oklch(0.55_0.15_265_/_0.3)]'
+          'bg-gradient-to-r from-primary to-primary/80',
+          'border-primary/30'
         )}
       >
         <div className="flex items-center gap-2">
@@ -167,7 +163,7 @@ export const CodeBlock = React.memo<CodeBlockProps>(function CodeBlock({
             'hover:bg-white/10',
             // Neon glow on hover
             'transition-shadow duration-200',
-            'hover:shadow-[0_0_20px_oklch(0.55_0.15_265_/_0.5)]'
+            'hover:shadow-lg hover:shadow-primary/20'
           )}
           aria-label="Kodu kopyala"
         >
@@ -210,7 +206,7 @@ export const CodeBlock = React.memo<CodeBlockProps>(function CodeBlock({
                     '-mx-2 px-2 transition-colors duration-150',
                     // Cosmic highlight with neon border
                     isHighlighted &&
-                      'border-s-4 border-[oklch(0.55_0.15_265)] bg-[oklch(0.55_0.15_265_/_0.15)]'
+                      'border-s-4 border-primary bg-primary/15'
                   )}
                 >
                   {showLineNumbers && (
@@ -227,7 +223,7 @@ export const CodeBlock = React.memo<CodeBlockProps>(function CodeBlock({
           </pre>
         )}
       </Highlight>
-    </motion.div>
+    </div>
   );
 });
 
